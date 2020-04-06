@@ -1,0 +1,23 @@
+{
+  "name": "dashboard-2-column",
+  "version": "1.0.0",
+  "description": "Default",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kuntau/gigpos-ui.git"
+  },
+  "keywords": [],
+  "author": "Ives van Hoorne",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kuntau/gigpos-ui/issues"
+  },
+  "homepage": "https://github.com/kuntau/gigpos-ui#readme",
+  "devDependencies": {
+    "serve": "^11.2.0"
+  }
+}
