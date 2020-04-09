@@ -33,7 +33,9 @@ nav .search {
 .card-content {
   background-color: var(--card-bg-color);
   background-color: transparent;
-  /* min-height: 400px; */
+}
+.card-list {
+  margin-top: .2rem;
 }
 .list-card-content {
   /* background-color: var(--card-bg-color); */
