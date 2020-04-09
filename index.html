@@ -18,22 +18,17 @@
         <nav class="pt-3">
           <p class="title uppercase text-xs text-gray-600 tracking-wider">main</p>
           <ul class="ml-2 mt-2">
-            <li class="flex-grow px-2 py-1">
-              <a class="text-sm tracking-wide text-blue-900 hover:text-blue-700 active" href="#">
-                <i class="fad fa-user"></i> Super
-              </a>
-            </li>
             <li class="flex-grow px-2 py-1" v-for="nav in sideNav">
-              <a class="text-sm font-light text-blue-900 hover:text-blue-700" href="#">
-                <i class="fad fa-user"></i> {{ nav }}
+              <a class="text-sm font-light text-blue-900 hover:text-blue-700" :class="{ active: nav.active }" :href="nav.url">
+                <i class="fad fa-user"></i> {{ nav.name }}
               </a>
             </li>
           </ul>
           <p class="title uppercase text-xs text-gray-600 mt-3">Store</p>
           <ul class="ml-2 mt-2">
             <li class="flex-grow px-2 py-1" v-for="nav in sideNav">
-              <a class="text-core font-light tracking-wide text-blue-900 hover:text-blue-700" href="#">
-                <i class="fad fa-university"></i> {{ nav }}
+              <a class="text-core font-light tracking-wide text-blue-900 hover:text-blue-700" :href="nav.url">
+                <i class="fad fa-university"></i> {{ nav.name }}
               </a>
             </li>
           </ul>
