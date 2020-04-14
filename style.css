@@ -67,15 +67,15 @@ nav .search {
 .card-list {
   margin-top: .2rem;
 }
-.list-card-content {
-  /* background-color: var(--card-bg-color); */
-  /* min-height: 400px; */
-}
-.card-list-item {
-  /* background-color: rgba(255, 0, 0, 0.15); */
+.card-header > .chevron-left {
+  /* top: 8px; */
+  /* left: -15px; */
 }
 .card-list-quantity {
   background-color: var(--card-bg-color);
+}
+.card-list-delete {
+  right: -10px;
 }
 .bg-card-bg {
   background-color: var(--card-bg-color);
@@ -94,4 +94,46 @@ a.active {
 
 .btn {
   transition: 0.2s ease-in;
+}
+
+/* POPOVER STLYE */
+.popover-customer {
+  /* position: relative; */
+  background-color: #333;
+  background-color: var(--bg-dark);
+  width: 90%;
+  top: 50px;
+  margin-left: -39%;
+}
+.popover:before {
+  position: absolute;
+  z-index: 1;
+  top: -20px;
+  left: 70%;
+  content: "";
+  border-style: solid;
+  border-width: 10px;
+  border-color: transparent transparent #222 transparent;
+}
+.popover:after {
+  position: absolute;
+  z-index: 1;
+  top: -20px;
+  left: 70%;
+  content: "";
+  border-style: solid;
+  border-width: 10px;
+  border-color: transparent transparent var(--bg-dark) transparent;
+}
+.popover > .arrow {
+  text-transform: uppercase;
+}
+.fade-enter-active {
+  transition: all .2s ease-in;
+}
+.fade-leave-active {
+  transition: all .1s ease-out;
+}
+.fade-enter, .fade-leave-to {
+  transform: translateY(5px);
 }
