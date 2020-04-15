@@ -5,6 +5,8 @@ new Vue({
   data: {
     customerHover: false,
     listHover: false,
+    taxRate: 6,
+    discount: 20,
     topNavLeft: ["Home", "Name"],
     topNavRight: ["Logout", "Kuntau"],
     sideNav: [
