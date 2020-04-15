@@ -114,32 +114,10 @@ new Vue({
   },
   computed: {
     currentSaleSubTotal() {
-      // let subtotal = this.currentSale.map(el => el.price * el.quantity).reduce((count, el) => {
-      //   // if ("addon" in count) el.addon.map(el => el.price * el.quantity).reduce((count, el) => count + el)
-      //   console.log(count, el);
-      //   return count + el;
-      // })
-      let subtotal = this.currentSale.reduce((c,e) => {
-        let f;
-        try {
-          f = e.addon.map(el => el.price * el.quantity).reduce((count, el) => count + el)
-        } catch (e) {
-          // console.log(e);
-        }
-        // console.log(f);
-
-        // if ("addon" in c) { f = e.addon.map(el => el.price * el.quantity).reduce((count, el) => count + el) }
-        return c += (f ? f : 0) + (e.price*e.quantity)
-      },0)
-      console.log(subtotal)
-      return subtotal;
+      let subtotal = 0; // weird this have to initialized else we got NaN
       this.currentSale.forEach(el => {
-        subtotal += el.price * el.quantity;
-        if ("addon" in el) {
-          el.addon.forEach(el => {
-            subtotal += el.price
-          })
-        }
+        subtotal += el.price * el.quantity; // calculate price for main item
+        if ("addon" in el) el.addon.forEach(el => subtotal += el.price) // calculate price for main's addon
       })
       return subtotal;
     },
