@@ -144,7 +144,7 @@ new Vue({
       return subtotal;
     },
     currentSaleTotal() {
-      return this.subTotal + (this.subTotal * 6/100)
+      return this.formatPrice(this.currentSaleSubTotal + (this.currentSaleSubTotal * 6/100))
     }
   },
   methods: {
@@ -153,14 +153,11 @@ new Vue({
     },
     formatPriceString(price) {
       return "RM" + this.formatPrice(price)
-      // return "RM" + Number.parseFloat(price).toFixed(2)
     },
     totalPrice(items) {
       let subtotal = items.price * items.quantity;
-      try {
-        items.addon.forEach(el => subtotal += el.price)}
-      catch (e) {
-        console.info("totalPrice: ",e)
+      if ("addon" in items && items.addon.length > 0) {
+        items.addon.forEach(el => subtotal += el.price)
       }
       return this.formatPrice(subtotal);
     }
