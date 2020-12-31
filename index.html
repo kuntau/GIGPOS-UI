@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="tailwind.min.css">
     <link rel="stylesheet" href="style.css">
   </head>
+
   <body>
     <div id="app" class="wrapper flex content-center sm:max-w-screen-xl mx-auto">
+
       <div class="sidebar fixed px-2 pl-5 py-3">
         <div class="store text-blue-800 font-medium px-1 py-2 mb-3">
           <a class="overflow-hidden" href="#">
@@ -34,7 +36,9 @@
           </ul>
         </nav>
       </div>
+
       <section class="main container box-border relative w-full">
+
         <nav class="top-nav sticky inset-0 box-border inline-flex flex-grow w-full h-auto py-1 overflow-hidden">
           <div class="top-nav-left flex flex-grow items-start">
             <ul class="flex self-center">
@@ -55,7 +59,9 @@
             </ul>
           </div>
         </nav>
+
         <content class="main box-border my-10 flex">
+
           <div class="card my-2 w-8/12">
             <div class="card-header p-5 border-b hidden">
               <h2 class="text-xl text-gray-700 font-medium tracking-wide">Items</h2>
@@ -71,22 +77,23 @@
             </div>
             <div class="card-content py-4 px-0">
               <div class="grid grid-cols-4 gap-4 text-center">
-                <div class="h-20 bg-gray-200 p-2 text-gray-500 shadow">ITEM 1</div>
-                <div class="h-20 bg-gray-200 p-2 text-gray-500 shadow">ITEM 2</div>
-                <div class="h-20 bg-gray-200 p-2 text-gray-500 shadow">ITEM 3</div>
-                <div class="h-20 bg-gray-200 p-2 text-gray-500 shadow">ITEM 4</div>
-                <div class="h-20 bg-gray-200 p-2 text-gray-500 shadow">ITEM 5</div>
-                <div class="h-20 bg-gray-300 p-2 text-gray-600 shadow">ITEM 6</div>
-                <div class="h-20 bg-gray-200 p-2 text-gray-500 shadow">ITEM 7</div>
-                <div class="h-20 bg-gray-200 p-2 text-gray-500 shadow">ITEM 8</div>
-                <div class="h-20 bg-gray-200 p-2 text-gray-500 shadow">ITEM 9</div>
-                <div class="h-20 bg-gray-200 p-2 text-gray-500 shadow">ITEM 10</div>
+                <div class="h-20 bg-gray-200 p-2 text-gray-500 shadow"><img class="overflow-hidden" src="https://loremflickr.com/160/74/food?lock=1" alt=""></div>
+                <div class="h-20 bg-gray-200 p-2 text-gray-500 shadow"><img class="overflow-hidden" src="https://loremflickr.com/160/74/food?lock=2" alt=""></div>
+                <div class="h-20 bg-gray-200 p-2 text-gray-500 shadow"><img class="overflow-hidden" src="https://loremflickr.com/160/74/food?lock=3" alt=""></div>
+                <div class="h-20 bg-gray-200 p-2 text-gray-500 shadow"><img class="overflow-hidden" src="https://loremflickr.com/160/74/food?lock=4" alt=""></div>
+                <div class="h-20 bg-gray-200 p-2 text-gray-500 shadow"><img class="overflow-hidden" src="https://loremflickr.com/160/74/food?lock=5" alt=""></div>
+                <div class="h-20 bg-gray-300 p-2 text-gray-600 shadow"><img class="overflow-hidden" src="https://loremflickr.com/160/74/food?lock=6" alt=""></div>
+                <div class="h-20 bg-gray-200 p-2 text-gray-500 shadow"><img class="overflow-hidden" src="https://loremflickr.com/160/74/food?lock=7" alt=""></div>
+                <div class="h-20 bg-gray-200 p-2 text-gray-500 shadow"><img class="overflow-hidden" src="https://loremflickr.com/160/74/food?lock=8" alt=""></div>
+                <div class="h-20 bg-gray-200 p-2 text-gray-500 shadow"><img class="overflow-hidden" src="https://loremflickr.com/160/74/food?lock=9" alt=""></div>
+                <div class="h-20 bg-gray-200 p-2 text-gray-500 shadow"><img class="overflow-hidden" src="https://loremflickr.com/160/74/food?lock=10" alt=""></div>
               </div>
             </div>
             <div class="card-footer bg-gray-200 shadow-lg p-2 hidden">
               <a class="inline-block mr-2" href="#">{{$data}}</a>
             </div>
           </div>
+
           <div class="card relative flex flex-col bg-card-bg my-2 bg-white shadow-lg rounded w-4/12 ml-3">
             <div class="card-header bg-white rounded-t border-b flex">
               <h2 class="text-lg text-gray-700 font-medium tracking-wide py-4 mx-4">Current sale</h2>
@@ -141,6 +148,7 @@
         </content>
       </section>
     </div>
+
     <!-- <script src="https://kit.fontawesome.com/5ee261b4a3.js" crossorigin="anonymous"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
     <!-- <script src="./node_modules/vue/dist/vue.min.js"></script> -->
