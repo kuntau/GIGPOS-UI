@@ -1,5 +1,5 @@
 {
-  "name": "dashboard-2-column",
+  "name": "gigpos",
   "version": "1.0.0",
   "description": "Default",
   "main": "index.html",
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/kuntau/gigpos-ui.git"
   },
   "keywords": [],
-  "author": "Ives van Hoorne",
+  "author": "Nizamuddin Sulieman",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kuntau/gigpos-ui/issues"
