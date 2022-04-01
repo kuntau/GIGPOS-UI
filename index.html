@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Cashier Template</title>
     <link rel="stylesheet" href="node_modules/tailwindcss/dist/tailwind.min.css">
+    <link rel="stylesheet" href="fonts/css/all.css">
     <link rel="stylesheet" href="style.css">
   </head>
 
@@ -21,7 +22,7 @@
           <p class="title uppercase text-xs text-gray-600 tracking-wider">main</p>
           <ul class="ml-2 mt-2">
             <li class="flex-grow px-2 py-1" v-for="nav in sideNav">
-              <a class="text-sm font-light text-blue-900 hover:text-blue-700" :class="{ active: nav.active }" :href="nav.url">
+              <a class="text-core font-normal tracking-wide text-blue-900 hover:text-blue-700" :class="{ active: nav.active }" :href="nav.url">
                 <i :class="nav.icon"></i> {{ nav.name }}
               </a>
             </li>
@@ -29,7 +30,7 @@
           <p class="title uppercase text-xs text-gray-600 mt-3">Store</p>
           <ul class="ml-2 mt-2">
             <li class="flex-grow px-2 py-1" v-for="nav in sideNav">
-              <a class="text-core font-light tracking-wide text-blue-900 hover:text-blue-700" :href="nav.url">
+              <a class="text-sm font-light text-blue-900 hover:text-blue-700" :href="nav.url">
                 <i class="fad fa-university"></i> {{ nav.name }}
               </a>
             </li>
@@ -153,7 +154,7 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
     <!-- <script src="./node_modules/vue/dist/vue.min.js"></script> -->
     <!-- <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> -->
-    <script src="fonts/js/all.min.js"></script>
+    <!-- <script src="fonts/js/all.min.js"></script> -->
     <!-- <script type="module"> -->
     <!--   import Vue from './node_modules/vue/dist/vue.esm.browser.js' -->
     <!-- </script> -->
