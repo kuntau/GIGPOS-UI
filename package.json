@@ -1,27 +1,21 @@
 {
-  "name": "gigpos",
-  "version": "1.0.0",
-  "description": "Default",
-  "main": "index.html",
+  "name": "vite-vue-test",
+  "private": true,
+  "version": "0.0.0",
   "scripts": {
-    "start": "serve"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kuntau/gigpos-ui.git"
-  },
-  "keywords": [],
-  "author": "Nizamuddin Sulieman",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/kuntau/gigpos-ui/issues"
-  },
-  "homepage": "https://github.com/kuntau/gigpos-ui#readme",
-  "devDependencies": {
-    "eslint": "^8.12.0"
+    "dev": "vite --host",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "tailwindcss": "^1.2.0",
-    "vue": "^2.6.11"
+    "vue": "^3.2.25"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.3.0",
+    "typescript": "^4.5.4",
+    "vite": "^2.9.0",
+    "vite-plugin-windicss": "^1.8.3",
+    "vue-tsc": "^0.29.8",
+    "windicss": "^3.5.1"
   }
 }
