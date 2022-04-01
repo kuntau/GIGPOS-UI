@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+/* @use postcss-simple-vars; */
+:root {
+  --bg-color: #e4e8ee;
+  --card-bg-color: #f7fafc;
+  --main-color: #5469d4;
+  --link-color: #5469d4;
+  --link-hover-color: #555;
+  --bg-dark: #fff;
+  --blue: #007bff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --teal: #20c997;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --primary: #007bff;
+  --secondary: #6c757d;
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI","Open Sans","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+  background-color: var(--bg-color);
+  font-family: "Open Sans", sans-serif;
+  box-sizing: border-box;
+}
+.wrapper {
+  min-width: 1024px;
+}
+nav li {
+  padding: 0.75rem;
+}
+
+.sidebar {
+  width: 240px;
+  z-index: 10;
+}
+section.main {
+  padding-left: 240px;
+}
+nav .search {
+  min-width: 250px;
+}
+.card {
+  min-height: 400px;
+}
+.card-content {
+  background-color: var(--card-bg-color);
+  background-color: transparent;
+}
+.card-list {
+  margin-top: .2rem;
+}
+.card-header > .chevron-left {
+  /* top: 8px; */
+  /* left: -15px; */
+}
+.card-list-quantity {
+  background-color: var(--card-bg-color);
+}
+.card-list-delete {
+  right: -10px;
+}
+.bg-card-bg {
+  background-color: var(--card-bg-color);
+}
+
+a {
+  color: var(--link-color);
+}
+a:hover {
+  color: var(--link-hover-color);
+}
+a.active {
+  color: var(--link-color);
+  font-weight: 600;
+}
+
+.btn {
+  transition: 0.2s ease-in;
+}
+
+/* POPOVER STLYE */
+.popover-customer {
+  /* position: relative; */
+  background-color: #333;
+  background-color: var(--bg-dark);
+  width: 90%;
+  top: 50px;
+  margin-left: -39%;
+}
+.popover:before {
+  position: absolute;
+  z-index: 1;
+  top: -20px;
+  left: 70%;
+  content: "";
+  border-style: solid;
+  border-width: 10px;
+  border-color: transparent transparent #222 transparent;
+}
+.popover:after {
+  position: absolute;
+  z-index: 1;
+  top: -20px;
+  left: 70%;
+  content: "";
+  border-style: solid;
+  border-width: 10px;
+  border-color: transparent transparent var(--bg-dark) transparent;
+}
+.popover > .arrow {
+  text-transform: uppercase;
+}
+.fade-enter-active {
+  transition: all .2s ease-in;
+}
+.fade-leave-active {
+  transition: all .1s ease-out;
+}
+.fade-enter, .fade-leave-to {
+  transform: translateY(5px);
+}

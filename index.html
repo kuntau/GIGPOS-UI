@@ -1,147 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cashier Template</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.2.0/tailwind.min.css">
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GIGPOS</title>
+    <link rel="stylesheet" href="fonts/css/all.min.css">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div id="app" class="wrapper flex content-center sm:max-w-screen-xl mx-auto">
-      <div class="sidebar fixed px-2 pl-5 py-3">
-        <div class="store text-blue-800 font-medium px-1 py-2 mb-3">
-          <a class="overflow-hidden" href="#">
-            <span class="font-black fad fa-store bg-white p-2 rounded-full shadow mr-1"></span> Gets Global <span class="font-black fas fa-chevron-down"></span></a>
-        </div>
-        <nav class="pt-3">
-          <p class="title uppercase text-xs text-gray-600 tracking-wider">main</p>
-          <ul class="ml-2 mt-2">
-            <li class="flex-grow px-2 py-1">
-              <a class="text-sm tracking-wide text-blue-900 hover:text-blue-700 active" href="#">
-                <i class="fad fa-user"></i> Super
-              </a>
-            </li>
-            <li class="flex-grow px-2 py-1" v-for="nav in sideNav">
-              <a class="text-sm font-light text-blue-900 hover:text-blue-700" href="#">
-                <i class="fad fa-user"></i> {{ nav }}
-              </a>
-            </li>
-          </ul>
-          <p class="title uppercase text-xs text-gray-600 mt-3">Store</p>
-          <ul class="ml-2 mt-2">
-            <li class="flex-grow px-2 py-1" v-for="nav in sideNav">
-              <a class="text-core font-light tracking-wide text-blue-900 hover:text-blue-700" href="#">
-                <i class="fad fa-university"></i> {{ nav }}
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <section class="main container box-border relative w-full">
-        <nav class="top-nav sticky inset-0 box-border inline-flex flex-grow w-full h-auto py-1 overflow-hidden">
-          <div class="top-nav-left flex flex-grow items-start">
-            <ul class="flex self-center">
-              <li class="text-gray-700" v-for="nav in topNavLeft">{{ nav }}</li>
-            </ul>
-            <div class="inline-flex self-center">
-              <input class="search ml-2 px-4 h-8 content-center shadow rounded-l" type="text" placeholder='Press / to focus search'>
-              <button class="btn inline-block text-white text-core bg-green-500 hover:bg-green-600 h-8 px-2 py-1 -ml-1 rounded-r shadow"><i class="fas fa-search text-2xl text-center leading-none"></i></button>
-            </div>
-          </div>
-          <div class="top-nav-right">
-            <ul class="flex justify-end items-center">
-              <li class="inline-block" v-for="nav in topNavRight">
-                <a class="text-gray-700" href="#">
-                  <i class="fad fa-sign-in"></i> {{ nav }}</li>
-              </a>
-              <li class="inline-block"><a href="#"><img class="h-8 rounded-full shadow" src="https://gravatar.com/avatar/d69aae377ffa1f6fd90935a888933070" alt=""></a></li>
-            </ul>
-          </div>
-        </nav>
-        <content class="main box-border my-10 flex">
-          <div class="card my-2 w-7/12">
-            <div class="card-header p-5 border-b">
-              <h2 class="text-xl text-gray-700 font-medium tracking-wide">Items</h2>
-            </div>
-            <div class="card-header bg-gray-400 border-t">
-              <a class="inline-block px-4 py-4 border-r" href="#"><i class="fad fa-stars"></i> Favorite</a>
-              <a class="inline-block px-4 py-4 border-r" href="#"><i class="fad fa-utensils"></i> Foods</a>
-              <a class="inline-block px-4 py-4 border-r" href="#"><i class="fad fa-coffee"></i> Drinks</a>
-            </div>
-            <div class="card-content p-5">
-              <div class="grid grid-cols-3 gap-4 text-center">
-                <div class="h-16 bg-gray-200 p-2 text-gray-500">ITEM 1</div>
-                <div class="h-16 bg-gray-200 p-2 text-gray-500">ITEM 2</div>
-                <div class="h-16 bg-gray-200 p-2 text-gray-500">ITEM 3</div>
-                <div class="h-16 bg-gray-200 p-2 text-gray-500">ITEM 4</div>
-                <div class="h-16 bg-gray-200 p-2 text-gray-500">ITEM 5</div>
-                <div class="h-16 bg-gray-200 p-2 text-gray-500">ITEM 6</div>
-                <div class="h-16 bg-gray-200 p-2 text-gray-500">ITEM 7</div>
-                <div class="h-16 bg-gray-200 p-2 text-gray-500">ITEM 8</div>
-                <div class="h-16 bg-gray-200 p-2 text-gray-500">ITEM 9</div>
-                <div class="h-16 bg-gray-200 p-2 text-gray-500">ITEM 10</div>
-              </div>
-            </div>
-            <div class="card-footer bg-gray-400 border-t p-5">
-              <a class="inline-block mr-2" href="#"><i class="fad fa-stars"></i> Favorite</a>
-              <a class="inline-block mr-2" href="#"><i class="fad fa-utensils"></i> Foods</a>
-              <a class="inline-block mr-2" href="#"><i class="fad fa-coffee"></i> Drinks</a>
-            </div>
-          </div>
-          <div class="card flex flex-col bg-card-bg my-2 bg-white shadow-lg rounded w-5/12 ml-3">
-            <div class="card-header bg-white rounded-t p-4 border-b flex">
-              <h2 class="text-lg text-gray-700 font-medium tracking-wide mr-4">Current sale</h2>
-              <div class="flex-grow text-right text-lg text-gray-700 border-l pl-2">
-                <p>Customer345 <span class="ml-2 far fa-chevron-circle-down border rounded-full"></span></p>
-              </div>
-            </div>
-            <div class="list-card-content flex-grow p-5">
-              <div class="card-list flex">
-                <div class="card-list-item flex flex-col flex-grow">
-                  <div class="text-gray-700 font-medium card-list-item-main">Nasi Lemak</div>
-                  <div class="text-gray-500 text-sm card-list-item-detail">Ayam goreng -- RM3.50</div>
-                  <div class="text-gray-500 text-sm card-list-item-detail">Sambal kerang -- RM2.50</div>
-                </div>
-                <!-- <div class="w-8 text-center text-gray-700 card-list-quantity">2</div> -->
-                <input class="w-8 h-6 text-center text-gray-700 card-list-quantity" value="2" type="number">
-                <div class="text-center text-gray-700 card-list-price">RM8.90</div>
-              </div>
-              <div class="card-list flex">
-                <div class="card-list-item flex flex-col flex-grow">
-                  <div class="text-gray-700 font-medium card-list-item-main">Chocolate Shake</div>
-                  <div class="text-gray-500 text-sm card-list-item-detail">Extra whip -- RM1.00</div>
-                </div>
-                <input class="w-8 h-6 text-center text-gray-700 card-list-quantity" value="1" type="number">
-                <div class="text-center text-gray-700 card-list-price">RM6.90</div>
-              </div>
-              <div class="card-list flex">
-                <div class="card-list-item flex flex-col flex-grow">
-                  <div class="text-gray-700 font-medium card-list-item-main">Hot Latte</div>
-                </div>
-                <input class="w-8 h-6 text-center text-gray-700 card-list-quantity" value="1" type="number">
-                <div class="text-center text-gray-700 card-list-price">RM4.90</div>
-              </div>
-            </div>
-            <div class="card-footer bg-white rounded-b p-5 border-t">
-              <p class="text-right text-gray-700 font-normal tracking-wide">Sub total : RM70.00</p>
-              <p class="text-right text-gray-700 font-normal tracking-wide">Tax : 6%</p>
-              <p class="text-right text-gray-700 font-normal tracking-wide">Discount : 20%</p>
-            </div>
-            <div class="card-footer bg-gray-200 rounded-b p-3 border-t">
-              <p class="text-xl text-right text-gray-700 font-medium tracking-wide">Total: RM88.00</p>
-            </div>
-          </div>
-        </content>
-      </section>
-    </div>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script> -->
-    <script src="./node_modules/vue/dist/vue.min.js"></script>
-    <script src="https://kit.fontawesome.com/5ee261b4a3.js" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
-    <script id="__bs_script__">//<![CDATA[
-      document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.26.7'><\/script>".replace("HOST", location.hostname));
-        //]]></script>  
+    <div id="app" class="wrapper flex content-center sm:max-w-screen-xl mx-auto"></div>
+    <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
