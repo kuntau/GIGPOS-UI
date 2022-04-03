@@ -156,10 +156,27 @@ const currentSaleTotal = computed(() => formatPrice(currentSaleSubTotal.value + 
   background-color: var(--card-bg-color);
 }
 .card-content {
-  z-index: 1; /* filler */
-  background-color: transparent;
+  background-color: pink;
 }
-.card-footer:last-child {
+.card-footer:nth-child(odd) {
+  background-color: var(--card-bg-color);
+}
+
+.card-list {
+  margin-top: .2rem;
+  /* background-color: var(--pink); */
+}
+.card-header > .chevron-left {
+  /* top: 8px; */
+  /* left: -15px; */
+}
+.card-list-quantity {
+  background-color: var(--card-bg-color);
+}
+.card-list-delete {
+  right: -10px;
+}
+.bg-card-bg {
   background-color: var(--card-bg-color);
 }
 

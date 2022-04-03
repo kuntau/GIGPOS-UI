@@ -53,9 +53,12 @@ import Monolith from './components/Monolith.vue'
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 .wrapper {
   min-width: 1024px;
 }
+
+/* navigations */
 nav li {
   padding: 0.75rem;
 }
@@ -70,32 +73,8 @@ section.main {
 nav .search {
   min-width: 250px;
 }
-.card {
-  min-height: 400px;
-}
-.card-content {
-  z-index: 1; /* filler */
-  background-color: var(--card-bg-color);
-  background-color: transparent;
-}
-.card-list {
-  margin-top: .2rem;
-  /* background-color: var(--pink); */
-}
-.card-header > .chevron-left {
-  /* top: 8px; */
-  /* left: -15px; */
-}
-.card-list-quantity {
-  background-color: var(--card-bg-color);
-}
-.card-list-delete {
-  right: -10px;
-}
-.bg-card-bg {
-  background-color: var(--card-bg-color);
-}
 
+/* links */
 a {
   color: var(--link-color);
 }
@@ -107,6 +86,7 @@ a.active {
   font-weight: 600;
 }
 
+/* buttons */
 .btn {
   transition: 0.2s ease-in;
 }

@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import SalesCard from './SalesCard.vue'
+import MenuCard from './Cashier/MenuCard.vue'
+import SalesCard from './Cashier/SalesCard.vue'
 
 defineProps<{ msg: string }>()
 
@@ -103,41 +104,8 @@ const sideNav = [
     </nav>
 
     <content class="box-border my-10 flex">
-
-      <div class="card my-2 w-8/12">
-        <div class="card-header p-5 border-b hidden">
-          <h2 class="text-xl text-gray-700 font-medium tracking-wide">Items</h2>
-        </div>
-        <div class="card-header border rounded shadow-md relative flex">
-          <a class="p-4 border" href="#"><i class="fad fa-chevron-left"></i></a>
-          <a class="px-4 py-4 border-r text-blue-700 bg-gray-300 shadow-inner" href="#"><i class="fad fa-stars"></i> Favorite</a>
-          <a class="px-4 py-4 border-r" href="#"><i class="fad fa-utensils"></i> Foods</a>
-          <a class="px-4 py-4 border-r" href="#"><i class="fad fa-beer"></i> Cold drinks</a>
-          <a class="px-4 py-4 border-r" href="#"><i class="fad fa-coffee"></i> Hot drinks</a>
-          <a class="px-4 py-4 flex-1" href="#"><i class="fad fa-search"></i> Search</a>
-          <a class="p-4 border" href="#"><i class="fad fa-chevron-right"></i></a>
-        </div>
-        <div class="card-content py-4 px-0">
-          <div class="grid grid-cols-4 gap-4 text-center">
-            <div class="h-20 bg-gray-200 text-gray-500 shadow bg-cover"><img class="overflow-hidden" src="https://loremflickr.com/160/80/food?lock=1" alt=""></div>
-            <div class="h-20 bg-gray-200 text-gray-500 shadow bg-cover"><img class="overflow-hidden" src="https://loremflickr.com/160/80/food?lock=2" alt=""></div>
-            <div class="h-20 bg-gray-200 text-gray-500 shadow bg-cover"><img class="overflow-hidden" src="https://loremflickr.com/160/80/food?lock=3" alt=""></div>
-            <div class="h-20 bg-gray-200 text-gray-500 shadow bg-cover"><img class="overflow-hidden" src="https://loremflickr.com/160/80/food?lock=4" alt=""></div>
-            <div class="h-20 bg-gray-200 text-gray-500 shadow bg-cover"><img class="overflow-hidden" src="https://loremflickr.com/160/80/food?lock=5" alt=""></div>
-            <div class="h-20 bg-gray-300 text-gray-600 shadow bg-cover"><img class="overflow-hidden" src="https://loremflickr.com/160/80/food?lock=6" alt=""></div>
-            <div class="h-20 bg-gray-200 text-gray-500 shadow bg-cover"><img class="overflow-hidden" src="https://loremflickr.com/160/80/food?lock=7" alt=""></div>
-            <div class="h-20 bg-gray-200 text-gray-500 shadow bg-cover"><img class="overflow-hidden" src="https://loremflickr.com/160/80/food?lock=8" alt=""></div>
-            <div class="h-20 bg-gray-200 text-gray-500 shadow bg-cover"><img class="overflow-hidden" src="https://loremflickr.com/160/80/food?lock=9" alt=""></div>
-            <div class="h-20 bg-gray-200 text-gray-500 shadow bg-cover"><img class="overflow-hidden" src="https://loremflickr.com/160/80/food?lock=10" alt=""></div>
-          </div>
-        </div>
-        <div class="card-footer bg-gray-200 shadow-lg p-2">
-          <!-- <a class="inline-block mr-2" href="#">footer</a> -->
-        </div>
-      </div>
-
+      <MenuCard />
       <SalesCard />
-
     </content>
   </section>
 </template>
