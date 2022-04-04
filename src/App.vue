@@ -1,12 +1,21 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import Monolith from './components/Monolith.vue'
+import TopNav from './components/TopNav.vue'
+import SideNav from './components/SideNav.vue'
+import MenuCard from  './components/Cashier/MenuCard.vue'
+import SalesCard from './components/Cashier/SalesCard.vue'
+
+// defineProps<{ msg: string }>()
 </script>
 
 <template>
-  <!-- <HelloWorld msg="Hello Vue 3 + TypeScript + Vite + WindiCSS" /> -->
-  <Monolith msg="Hi" />
+  <SideNav />
+  <section class="main container box-border relative w-full">
+    <TopNav />
+    <content class="box-border my-10 flex">
+      <MenuCard />
+      <SalesCard />
+    </content>
+  </section>
 </template>
 
 <style>
@@ -58,20 +67,13 @@ import Monolith from './components/Monolith.vue'
   min-width: 1024px;
 }
 
-/* navigations */
-nav li {
-  padding: 0.75rem;
-}
-
 .sidebar {
   width: 240px;
   z-index: 10;
 }
+
 section.main {
   padding-left: 240px;
-}
-nav .search {
-  min-width: 250px;
 }
 
 /* links */
