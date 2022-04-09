@@ -17,4 +17,7 @@ plugins:
   - 'html'
   - 'prettier'
 rules:
-  prettier/prettier: 'error'
+  prettier/prettier:
+  - 'warn'
+  - singleQuote: true
+    semi: true
