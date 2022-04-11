@@ -43,6 +43,9 @@ const sideNav = [
     active: false
   }
 ]
+
+defineProps<{ page: string }>()
+
 </script>
 <template>
   <div class="sidebar fixed px-2 pl-5 py-3">
@@ -51,7 +54,7 @@ const sideNav = [
         <span class="font-black bg-white p-2 rounded-full shadow mr-1"><i class="fad fa-store"></i></span> Gets Global <span class="font-black fas fa-chevron-down"></span></a>
     </div>
     <nav class="pt-3">
-      <p class="title uppercase text-xs text-gray-600 tracking-wider">main</p>
+      <p class="title uppercase text-xs text-gray-600 tracking-wider">{{ page }}</p>
       <ul class="ml-2 mt-2">
         <li class="flex-grow px-2 py-1" v-for="nav in sideNav">
           <a class="text-core font-normal tracking-wide text-gray-700 hover:text-blue-700" :class="{ active: nav.active }" :href="nav.url">

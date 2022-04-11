@@ -1,14 +1,18 @@
 <script setup lang="ts">
-import TopNav from './components/TopNav.vue'
-import SideNav from './components/SideNav.vue'
-import MenuCard from  './components/Cashier/MenuCard.vue'
-import SalesCard from './components/Cashier/SalesCard.vue'
+import TopNav from './components/TopNav.vue';
+import SideNav from './components/SideNav.vue';
+import MenuCard from './components/Cashier/MenuCard.vue';
+import SalesCard from './components/Cashier/SalesCard.vue';
+
+import { useGigpos } from './stores/gigpos';
+
+const gigpos = useGigpos();
 
 // defineProps<{ msg: string }>()
 </script>
 
 <template>
-  <SideNav />
+  <SideNav :page="gigpos.pageName" />
   <section class="main container box-border relative w-full">
     <TopNav />
     <content class="box-border my-10 flex">
@@ -54,10 +58,12 @@ import SalesCard from './components/Cashier/SalesCard.vue'
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Open Sans","Helvetica Neue",Arial,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  --font-family-monospace: "Operator Mono",Menlo,Monaco,Consolas,"Liberation Mono","Courier New",SFMono-Regular,monospace;
+  --font-family-sans-serif: 'Open Sans', 'Helvetica Neue', Arial, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-monospace: 'Operator Mono', Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', SFMono-Regular, monospace;
   background-color: var(--bg-color);
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -92,5 +98,4 @@ a.active {
 .btn {
   transition: 0.2s ease-in;
 }
-
 </style>
