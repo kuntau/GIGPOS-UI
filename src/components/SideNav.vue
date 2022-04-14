@@ -1,50 +1,69 @@
 <script setup lang="ts">
-const sideNav = [
+const sideNavMain = [
   {
     name: 'Dashboard',
     url: 'dashboard.html',
-    icon: 'fad fa-city',
+    icon: 'fad fa-tachometer',
     active: false
   },
   {
     name: 'Cashier',
     url: 'cashier.html',
-    icon: 'fad fa-university',
+    icon: 'fad fa-cash-register',
     active: true
   },
   {
+    name: 'Inbox',
+    url: 'inbox.html',
+    icon: 'fad fa-mailbox',
+    active: false
+  },
+]
+
+  const sideNavReport = [
+  {
     name: 'Reports',
     url: 'reports.html',
-    icon: 'fad fa-dungeon',
+    icon: 'fad fa-file-chart-line',
     active: false
   },
   {
     name: 'Charts',
     url: 'charts.html',
-    icon: 'fad fa-gopuram',
+    icon: 'fad fa-chart-line',
     active: false
   },
   {
     name: 'Products',
-    url: 'products.html',
-    icon: 'fad fa-house-damage',
+    url: 'charts.html',
+    icon: 'fad fa-boxes',
     active: false
   },
   {
-    name: 'Inbox',
-    url: 'inbox.html',
-    icon: 'fad fa-igloo',
+    name: 'Customers',
+    url: 'charts.html',
+    icon: 'fad fa-users',
     active: false
   },
+]
+  const sideNavHelp = [
   {
     name: 'Settings',
     url: 'settings.html',
-    icon: 'fad fa-industry',
+    icon: 'fad fa-cogs',
+    active: false
+  },
+  {
+    name: 'Support',
+    url: 'support.html',
+    icon: 'fad fa-life-ring',
     active: false
   }
 ]
 
-defineProps<{ page: string }>()
+defineProps<{
+  page: string
+}>()
 
 </script>
 <template>
@@ -54,19 +73,27 @@ defineProps<{ page: string }>()
         <span class="font-black bg-white p-2 rounded-full shadow mr-1"><i class="fad fa-store"></i></span> Gets Global <span class="font-black fas fa-chevron-down"></span></a>
     </div>
     <nav class="pt-3">
-      <p class="title uppercase text-xs text-gray-600 tracking-wider">{{ page }}</p>
+      <p class="title uppercase text-xs text-gray-600 tracking-wider">Main</p>
       <ul class="ml-2 mt-2">
-        <li class="flex-grow px-2 py-1" v-for="nav in sideNav">
+        <li class="flex-grow px-2 py-1" v-for="nav in sideNavMain">
           <a class="text-core font-normal tracking-wide text-gray-700 hover:text-blue-700" :class="{ active: nav.active }" :href="nav.url">
             <i :class="nav.icon"></i> {{ nav.name }}
           </a>
         </li>
       </ul>
-      <p class="title uppercase text-xs text-gray-600 mt-3">Store</p>
+      <p class="title uppercase text-xs text-gray-600 tracking-wider mt-3">Reporting</p>
       <ul class="ml-2 mt-2">
-        <li class="flex-grow px-2 py-1" v-for="nav in sideNav">
-          <a class="text-sm font-light text-blue-900 hover:text-blue-700" :href="nav.url">
-            <i class="fad fa-university"></i> {{ nav.name }}
+        <li class="flex-grow px-2 py-1" v-for="nav in sideNavReport">
+          <a class="text-core font-normal tracking-wide text-gray-700 hover:text-blue-700" :class="{ active: nav.active }" :href="nav.url">
+            <i :class="nav.icon"></i> {{ nav.name }}
+          </a>
+        </li>
+      </ul>
+      <p class="title uppercase text-xs text-gray-600 tracking-wider mt-3">Help</p>
+      <ul class="ml-2 mt-2">
+        <li class="flex-grow px-2 py-1" v-for="nav in sideNavHelp">
+          <a class="text-core font-normal tracking-wide text-gray-700 hover:text-blue-700" :class="{ active: nav.active }" :href="nav.url">
+            <i :class="nav.icon"></i> {{ nav.name }}
           </a>
         </li>
       </ul>

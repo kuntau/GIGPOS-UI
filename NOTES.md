@@ -10,23 +10,36 @@
   - [-] Setup `pinia`
     - [x] Install
     - [-] Setting
+    - [-] State 
+    - [ ] Getter 
+    - [ ] Setter 
     - [ ] Mock working
     - [ ] Done
   - [ ] Setup `vitest`
+  - [x] Setup `faker`
 - [-] Components
   - [x] Split to smaller components
-  - [-] Name the damn components... it's hard. Naming is damn hard.
+  - [-] Name the damn components... It's hard. Naming is damn hard.
 - [ ] UX
   - [ ] Better way to edit open order
-- [ ] UI
-  - [x] Fix menu images -- use cover
+  - [ ] Collapsible sidebar
+- [-] UI
+  - [ ] Theme/night mode
   - [-] Fix color inconsistency between TailwindCSS and WindiCSS -- Or maybe this is because TailwindCSS v1 vs v3
-  - [ ] Make scrollable *categories*
-  - [ ] *Name* in menu
+  - [-] Cashier
+    - [x] Fix menu images -- use cover
+    - [ ] Make scrollable *categories*
+    - [ ] *Name* in menu
+- [ ] Fix typing
 
 ## Snippets
 
 - [Horizontal scroll](https://codepen.io/kuntau/pen/XWmJezP?editors=1010)
+- [eslint config](https://bestofvue.com/repo/winniesi-vite-eslint-vuejs-vite-templates)
+
+## Library
+
+- Fetch wrapper, [mande](https://github.com/posva/mande)
 
 ## Docs
 
