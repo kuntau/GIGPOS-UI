@@ -2,22 +2,27 @@ env:
   browser: true
   es2021: true
   commonjs: true
+  node: true
 extends: 
-  # - 'eslint:recommended'
-  - 'plugin:vue/vue3-recommended'
+  - 'eslint:recommended'
+  - '@vue/typescript/recommend'
   - 'prettier'
+  # - 'plugin:vue/vue3-recommended'
+  # - 'plugin:@typescipt-eslint/eslint-recommend'
+  # - 'plugin:@typescipt-eslint/recommend'
 globals:
   Atomics: readonly
   SharedArrayBuffer: readonly
 parserOptions:
-  ecmaVersion: 13
+  ecmaVersion: 2020
   sourceType: 'module'
 plugins:
   - 'vue'
   - 'html'
   - 'prettier'
+  # - '@typescript-eslint'
 rules:
   prettier/prettier:
   - 'warn'
   - singleQuote: true
-    semi: true
+    semi: false
