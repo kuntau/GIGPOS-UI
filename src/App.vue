@@ -3,11 +3,9 @@ import TopNav from './components/TopNav.vue';
 import SideNav from './components/SideNav.vue';
 
 import { useGigpos } from './stores/gigpos';
+import { useRoute } from 'vue-router'
 
-import { useRouter, useRoute } from 'vue-router'
-// const router = useRouter()
 const route = useRoute()
-console.log(route.path)
 
 const gigpos = useGigpos();
 
