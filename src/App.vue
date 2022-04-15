@@ -1,24 +1,26 @@
 <script setup lang="ts">
 import TopNav from './components/TopNav.vue';
 import SideNav from './components/SideNav.vue';
-import MenuCard from './components/Cashier/MenuCard.vue';
-import SalesCard from './components/Cashier/SalesCard.vue';
 
 import { useGigpos } from './stores/gigpos';
 
+import { useRouter, useRoute } from 'vue-router'
+// const router = useRouter()
+const route = useRoute()
+console.log(route.path)
+
 const gigpos = useGigpos();
 
-// defineProps<{ msg: string }>()
 </script>
-
+ 
 <template>
   <SideNav :page="gigpos.pageName" />
   <section class="main container box-border relative w-full">
     <TopNav />
-    <content class="box-border my-10 flex">
-      <MenuCard />
-      <SalesCard />
-    </content>
+    <div class="box-border my-10 flex">
+      <router-view :page=route.path />
+      <!-- <router-view :key="$route.path" v-show="showPage" @ready="pageReady" /> -->
+    </div>
   </section>
 </template>
 

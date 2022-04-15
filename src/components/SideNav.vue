@@ -1,22 +1,27 @@
 <script setup lang="ts">
+import { useRouter, useRoute } from 'vue-router';
+
+const router = useRouter();
+const route = useRoute();
+
 const sideNavMain = [
   {
     name: 'Dashboard',
     url: 'dashboard.html',
+    to: '/dashboard',
     icon: 'fad fa-tachometer',
-    active: false
   },
   {
     name: 'Cashier',
     url: 'cashier.html',
+    to: '/cashier',
     icon: 'fad fa-cash-register',
-    active: true
   },
   {
     name: 'Inbox',
     url: 'inbox.html',
+    to: '/inbox',
     icon: 'fad fa-mailbox',
-    active: false
   },
 ]
 
@@ -61,6 +66,8 @@ const sideNavMain = [
   }
 ]
 
+const openInbox = () => router.push('/inbox')
+
 defineProps<{
   page: string
 }>()
@@ -76,9 +83,9 @@ defineProps<{
       <p class="title uppercase text-xs text-gray-600 tracking-wider">Main</p>
       <ul class="ml-2 mt-2">
         <li class="flex-grow px-2 py-1" v-for="nav in sideNavMain">
-          <a class="text-core font-normal tracking-wide text-gray-700 hover:text-blue-700" :class="{ active: nav.active }" :href="nav.url">
+          <router-link class="text-core font-normal tracking-wide text-gray-700 hover:text-blue-700" :class="{ active: nav.to === route.path }" :to="nav.to">
             <i :class="nav.icon"></i> {{ nav.name }}
-          </a>
+          </router-link>
         </li>
       </ul>
       <p class="title uppercase text-xs text-gray-600 tracking-wider mt-3">Reporting</p>
@@ -94,6 +101,11 @@ defineProps<{
         <li class="flex-grow px-2 py-1" v-for="nav in sideNavHelp">
           <a class="text-core font-normal tracking-wide text-gray-700 hover:text-blue-700" :class="{ active: nav.active }" :href="nav.url">
             <i :class="nav.icon"></i> {{ nav.name }}
+          </a>
+        </li>
+        <li class="flex-grow px-2 py-1">
+          <a class="text-core font-normal tracking-wide text-gray-700 hover:text-blue-700" @click="openInbox()" href="#">
+            <i class="fad fa-cog"></i> {{ route.path }}
           </a>
         </li>
       </ul>
