@@ -4,7 +4,7 @@ import Dashboard from '@/pages/Dashboard.vue'
 import Cashier from '@/pages/Cashier.vue'
 const Inbox = { template: '<div>Inbox</div>' };
 
-const routes: Array<RouteRecordRaw> = [
+const routes: RouteRecordRaw[] = [
   {
     path: '/',
     alias: '/dashboard',

@@ -44,6 +44,7 @@ defineProps<{
     </div>
     <div class="card-footer shadow-lg rounded-b p-2">
       <a class="inline-block mr-2" href="#">{{ city }}</a>
+      <a class="inline-block mr-2" href="#">{{ page }}</a>
     </div>
   </div>
 </template>
