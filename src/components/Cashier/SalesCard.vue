@@ -142,7 +142,7 @@ const currentSaleTotal = computed(() =>
       </div>
       <div class="card-footer bg-white rounded-b mt-3 p-5 border-t">
         <p class="text-right text-gray-700 font-normal tracking-wide">
-          Sub total : {{ formatPriceString(currentSaleSubTotal) }}
+          Sub total : {{ formatPriceString(currentSaleSubTotal.toString()) }}
         </p>
         <p class="text-right text-gray-700 font-normal tracking-wide">
           Tax : {{ taxRate }}%
