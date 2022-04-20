@@ -13,8 +13,16 @@
     "vue-router": "^4.0.14"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "@faker-js/faker": "^6.2.0",
     "@types/node": "^17.0.25",
+||||||| parent of 0d77113 (chore: update package)
+    "@faker-js/faker": "^6.1.2",
+    "@types/node": "^17.0.24",
+=======
+    "@faker-js/faker": "^6.1.2",
+    "@types/node": "^17.0.25",
+>>>>>>> 0d77113 (chore: update package)
     "@vitejs/plugin-vue": "^2.3.1",
     "eslint": "^8.13.0",
     "eslint-config-prettier": "^8.5.0",
@@ -25,7 +33,13 @@
     "typescript": "^4.6.3",
     "vite": "^2.9.5",
     "vite-plugin-windicss": "^1.8.4",
+<<<<<<< HEAD
     "vue-tsc": "^0.34.9",
+||||||| parent of 0d77113 (chore: update package)
+    "vue-tsc": "^0.34.6",
+=======
+    "vue-tsc": "^0.34.7",
+>>>>>>> 0d77113 (chore: update package)
     "windicss": "^3.5.1"
   }
 }
