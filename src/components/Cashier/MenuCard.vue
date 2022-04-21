@@ -29,7 +29,35 @@ defineProps<{
       <h2 class="text-xl text-gray-700 font-medium tracking-wide">Items</h2>
     </div>
     <div class="card-header rounded shadow-md relative flex">
+<<<<<<< HEAD
       <TabScroller />
+||||||| parent of 717fbd5 (feat(Cashier): dynamic MenuCard)
+      <a class="p-4 border" href="#"><i class="fad fa-chevron-left"></i></a>
+      <a
+        class="px-4 py-4 font-normal border-r text-blue-700 bg-slate-200 shadow-inner"
+        href="#"
+        ><i class="fad fa-stars"></i> Favorite</a
+      >
+      <a class="px-4 py-4 font-normal border-r" href="#"
+        ><i class="fad fa-utensils"></i> Foods</a
+      >
+      <a class="px-4 py-4 font-normal border-r" href="#"
+        ><i class="fad fa-beer"></i> Cold drinks</a
+      >
+      <a class="px-4 py-4 font-normal border-r" href="#"
+        ><i class="fad fa-coffee"></i> Hot drinks</a
+      >
+      <a class="px-4 py-4 font-normal flex-1" href="#"
+        ><i class="fad fa-search"></i> Search</a
+      >
+      <a class="p-4 border" href="#"><i class="fad fa-chevron-right"></i></a>
+=======
+      <a class="p-4 border" href="#"><i class="fad fa-chevron-left"></i></a>
+      <a class="px-4 py-4 font-normal border-r tab" :class="{ active: index === tabActive }" v-for="(category, index) in categories" :key="index">
+        <i :class="category[1]"></i> {{ category[0] }}
+      </a>
+      <a class="p-4" href="#"><i class="fad fa-chevron-right"></i></a>
+>>>>>>> 717fbd5 (feat(Cashier): dynamic MenuCard)
     </div>
     <div class="card-content py-4 px-0">
       <div class="grid grid-cols-4 gap-4 text-center">
@@ -58,4 +86,42 @@ defineProps<{
   background-color: transparent;
 }
 
+<<<<<<< HEAD
+||||||| parent of 717fbd5 (feat(Cashier): dynamic MenuCard)
+/* links */
+a {
+  /* color: var(--link-color); */
+}
+a:hover {
+  color: var(--link-hover-color);
+  color: var(--link-color);
+}
+a.active {
+  color: var(--link-color);
+  font-weight: 600;
+}
+=======
+/* links */
+
+/* a { */
+/*   color: var(--link-color); */
+/* } */
+
+a:hover {
+  color: var(--link-hover-color);
+  color: var(--link-color);
+}
+
+a.active {
+  @apply text-blue-700 bg-slate-200 shadow-inner;
+  /* color: var(--link-color); */
+  font-weight: 600;
+}
+
+.tab:last-child {
+  @apply flex-1 text-green-700;
+  color: red;
+}
+
+>>>>>>> 717fbd5 (feat(Cashier): dynamic MenuCard)
 </style>
