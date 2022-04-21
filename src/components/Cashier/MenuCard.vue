@@ -27,6 +27,9 @@ const categories = [
 
 let tabActive = ref(1)
 
+const tabGoLeft = () => false
+const tabGoRight = () => false
+
 defineProps<{
   page: string
 }>()
@@ -39,11 +42,11 @@ defineProps<{
       <h2 class="text-xl text-gray-700 font-medium tracking-wide">Items</h2>
     </div>
     <div class="card-header rounded shadow-md relative flex">
-      <a class="p-4 border" href="#"><i class="fad fa-chevron-left"></i></a>
+      <button class="p-4 border" @click="tabGoLeft"><i class="fad fa-chevron-left"></i></button>
       <a class="px-4 py-4 font-normal border-r tab" :class="{ active: index === tabActive }" v-for="(category, index) in categories" :key="index">
         <i :class="category[1]"></i> {{ category[0] }}
       </a>
-      <a class="p-4" href="#"><i class="fad fa-chevron-right"></i></a>
+      <button class="p-4" @click="tabGoRight"><i class="fad fa-chevron-right"></i></button>
     </div>
     <div class="card-content py-4 px-0">
       <div class="grid grid-cols-4 gap-4 text-center">
