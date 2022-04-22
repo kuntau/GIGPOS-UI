@@ -18,8 +18,13 @@ const categories = [
 const useProducts = defineStore('products', {
   state: () => ({
     categories,
-    tabActive: 2,
+    tabActive: 1,
   }),
+  actions: {
+    selectTab(index: number) {
+      this.tabActive = index
+    }
+  }
 });
 
 if (import.meta.hot) {

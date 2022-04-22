@@ -10,12 +10,11 @@ interface ScrollTo {
 const products = useProducts();
 
 const categories = ref(products.categories);
-const tabActive = ref(products.tabActive);
 // const wrapper = ref<HTMLDivElement | null>(null)
 const wrapper = ref()
 
 const step = 200
-const duration = 100
+const duration = 200
 const tabGoLeft = () => {
   scrollTo(wrapper.value, -step, duration)
 }
@@ -44,12 +43,16 @@ const scrollTo: ScrollTo = (element, step, duration) => {
   }
 }
 
+const selectCategory = (index: number) => {
+  products.tabActive = index
+}
+
 </script>
 
 <template>
   <button class="rounded-l border-r" @click="tabGoLeft"><i class="fad fa-chevron-left"></i></button>
   <div ref="wrapper" class="whitespace-nowrap flex-auto flex overflow-x-hidden w-full">
-    <a class="tab px-4 py-4 font-normal hover:bg-slate-100 border-r" href="#" :class="{ active: index === tabActive }" v-for="(category, index) in categories" :key="index">
+    <a class="tab px-4 py-4 font-normal hover:bg-slate-100 border-r cursor-pointer" @click="products.selectTab(index)" :class="{ active: index === products.tabActive }" v-for="(category, index) in categories" :key="index">
       <i :class="category[1]"></i> {{ category[0] }}
     </a>
   </div>
