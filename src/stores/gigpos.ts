@@ -1,15 +1,34 @@
-import { defineStore } from 'pinia';
+import { defineStore, acceptHMRUpdate } from 'pinia';
 
-export const useStore = defineStore('main', {
+const useStore = defineStore('main', {
   state: () => ({
     pageId: 2,
     pageName: 'Cashier',
   }),
 });
 
-export const useCounter = defineStore('counter', {
+const useCounter = defineStore('counter', {
   state: () => ({
-    count: 0,
+    count: 1,
     gate: false
   }),
+  actions: {
+    increment() {
+      this.count++
+    },
+    decrement() {
+      this.count--
+    },
+    fixed() {
+      this.count = 50
+    }
+  }
 });
+
+if (import.meta.hot) {
+    import.meta.hot.accept(acceptHMRUpdate(useCounter, import.meta.hot));
+}
+
+export { useStore, useCounter }
+
+export default useStore;
