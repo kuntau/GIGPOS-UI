@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { faker } from '@faker-js/faker';
+import TabScroller from '@/components/Cashier/TabScroller.vue'
 const city = faker.address.city();
 
 const imageURL = 'https://loremflickr.com/160/80/food';
@@ -16,17 +17,6 @@ const menus = [
   { id: 8, name: 'Ketum', imageURL: faker.image.food(160, 100, true) },
 ];
 
-const categories = [
-  [ 'Favorite', 'fad fa-stars' ],
-  [ 'Foods', 'fad fa-utensils' ],
-  [ 'Cold drinks', 'fad fa-beer' ],
-  [ 'Hot drinks', 'fad fa-coffee' ],
-  [ 'Search', 'fad fa-search' ],
-  // [ faker.name.firstName(), 'fad fa-cogs' ],
-];
-
-let tabActive = ref(1)
-
 defineProps<{
   page: string
 }>()
@@ -39,11 +29,7 @@ defineProps<{
       <h2 class="text-xl text-gray-700 font-medium tracking-wide">Items</h2>
     </div>
     <div class="card-header rounded shadow-md relative flex">
-      <a class="p-4 border" href="#"><i class="fad fa-chevron-left"></i></a>
-      <a class="px-4 py-4 font-normal border-r tab" :class="{ active: index === tabActive }" v-for="(category, index) in categories" :key="index">
-        <i :class="category[1]"></i> {{ category[0] }}
-      </a>
-      <a class="p-4" href="#"><i class="fad fa-chevron-right"></i></a>
+      <TabScroller />
     </div>
     <div class="card-content py-4 px-0">
       <div class="grid grid-cols-4 gap-4 text-center">
@@ -69,28 +55,6 @@ defineProps<{
 }
 .card-content {
   background-color: transparent;
-}
-
-/* links */
-
-/* a { */
-/*   color: var(--link-color); */
-/* } */
-
-a:hover {
-  color: var(--link-hover-color);
-  color: var(--link-color);
-}
-
-a.active {
-  @apply text-blue-700 bg-slate-200 shadow-inner;
-  /* color: var(--link-color); */
-  font-weight: 600;
-}
-
-.tab:last-child {
-  @apply flex-1 text-green-700;
-  color: red;
 }
 
 </style>
