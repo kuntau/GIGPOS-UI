@@ -2,12 +2,12 @@
 import TopNav from './components/TopNav.vue';
 import SideNav from './components/SideNav.vue';
 
-import { useGigpos } from './stores/gigpos';
+import { useStore } from './stores/gigpos';
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
 
-const gigpos = useGigpos();
+const gigpos = useStore();
 
 </script>
  
