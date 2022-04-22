@@ -1,9 +1,29 @@
-import { defineStore } from 'pinia';
+import { defineStore, acceptHMRUpdate } from 'pinia';
 
-const categories = ['Favorite', 'Foods', 'Cold drinks', 'Hot drinks', 'Search'];
+const categories = [
+  [ 'Favorite', 'fad fa-stars' ],
+  [ 'Foods', 'fad fa-utensils' ],
+  [ 'File', 'fad fa-file' ],
+  [ 'Cold drinks', 'fad fa-beer' ],
+  [ 'Hot drinks', 'fad fa-coffee' ],
+  [ 'Search', 'fad fa-search' ],
+  [ 'Repeat', 'fad fa-cogs' ],
+  [ 'Foods', 'fad fa-utensils' ],
+  [ 'Cold drinks', 'fad fa-beer' ],
+  [ 'Hot drinks', 'fad fa-coffee' ],
+  [ 'Search', 'fad fa-search' ],
+  [ 'Repeat', 'fad fa-cogs' ],
+];
 
-export const useProducts = defineStore('products', {
+const useProducts = defineStore('products', {
   state: () => ({
-    category: categories,
+    categories,
+    tabActive: 2,
   }),
 });
+
+if (import.meta.hot) {
+    import.meta.hot.accept(acceptHMRUpdate(useProducts, import.meta.hot));
+}
+
+export { useProducts }
