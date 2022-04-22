@@ -16,8 +16,7 @@ const categories = [
 ];
 
 const tabActive = ref(1)
-const wrapper = ref<HTMLDivElement|null>(null)
-// const wrapper = ref<HTMLDivElement | null>(null)
+const wrapper = ref<HTMLDivElement | null>(null)
 
 const step = 200
 const duration = 200
