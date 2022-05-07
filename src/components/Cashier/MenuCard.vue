@@ -2,6 +2,9 @@
 import { ref } from 'vue';
 import { faker } from '@faker-js/faker';
 import TabScroller from '@/components/Cashier/TabScroller.vue'
+import { useProducts } from '../../stores/products';
+
+const products = useProducts();
 const city = faker.address.city();
 
 const imageURL = 'https://loremflickr.com/160/80/food';
@@ -44,6 +47,8 @@ defineProps<{
     </div>
     <div class="card-footer shadow-lg rounded-b p-2">
       <a class="inline-block mr-2" href="#">{{ city }}</a>
+      <a class="inline-block mr-2" href="#">{{ page }}</a>
+      <a class="inline-block mr-2" href="#">{{ products.tabActive }}</a>
     </div>
   </div>
 </template>

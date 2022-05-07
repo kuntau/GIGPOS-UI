@@ -1,39 +1,28 @@
 <script setup lang='ts'>
 import { ref } from 'vue'
+import { useProducts } from '../../stores/products';
 
-const categories = [
-  [ 'Favorite', 'fad fa-stars' ],
-  [ 'Foods', 'fad fa-utensils' ],
-  [ 'Cold drinks', 'fad fa-beer' ],
-  [ 'Hot drinks', 'fad fa-coffee' ],
-  [ 'Search', 'fad fa-search' ],
-  [ 'Repeat', 'fad fa-cogs' ],
-  [ 'Foods', 'fad fa-utensils' ],
-  [ 'Cold drinks', 'fad fa-beer' ],
-  [ 'Hot drinks', 'fad fa-coffee' ],
-  [ 'Search', 'fad fa-search' ],
-  [ 'Repeat', 'fad fa-cogs' ],
-];
+interface ScrollTo {
+  (element: HTMLDivElement, step: number, duration: number): void
+}
+// type ScrollTo= (element: HTMLDivElement, step: number, duration: number) => void
 
-const tabActive = ref(1)
-const wrapper = ref<HTMLDivElement|null>(null)
+const products = useProducts();
+
+const categories = ref(products.categories);
 // const wrapper = ref<HTMLDivElement | null>(null)
+const wrapper = ref()
 
 const step = 200
 const duration = 200
-let position = 0
 const tabGoLeft = () => {
-  console.log('we go left!')
-  scrollTo(wrapper.value as HTMLDivElement, -step, duration)
+  scrollTo(wrapper.value, -step, duration)
 }
 const tabGoRight = () => {
-  console.log('we go right!')
   scrollTo(wrapper.value as HTMLDivElement, step, duration)
 }
-const scrollTo = (element: HTMLDivElement, step: number, duration:number) : void => {
+const scrollTo: ScrollTo = (element, step, duration) => {
   const scrollPos = element.scrollLeft
-  position = element.scrollLeft
-  console.log('lets scroll', scrollPos, position)
 
   // condition to check if scrolling is required
   if (!((scrollPos === 0 || step > 0)
@@ -54,12 +43,16 @@ const scrollTo = (element: HTMLDivElement, step: number, duration:number) : void
   }
 }
 
+const selectCategory = (index: number) => {
+  products.tabActive = index
+}
+
 </script>
 
 <template>
   <button class="rounded-l border-r" @click="tabGoLeft"><i class="fad fa-chevron-left"></i></button>
   <div ref="wrapper" class="whitespace-nowrap flex-auto flex overflow-x-hidden w-full">
-    <a class="tab px-4 py-4 font-normal hover:bg-slate-100 border-r" href="#" :class="{ active: index === tabActive }" v-for="(category, index) in categories" :key="index">
+    <a class="tab px-4 py-4 font-normal hover:bg-slate-100 border-r cursor-pointer" @click="products.selectTab(index)" :class="{ active: index === products.tabActive }" v-for="(category, index) in categories" :key="index">
       <i :class="category[1]"></i> {{ category[0] }}
     </a>
   </div>

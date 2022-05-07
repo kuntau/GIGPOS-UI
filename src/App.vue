@@ -2,17 +2,17 @@
 import TopNav from './components/TopNav.vue';
 import SideNav from './components/SideNav.vue';
 
-import { useGigpos } from './stores/gigpos';
+import { useStore } from './stores/gigpos';
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
 
-const gigpos = useGigpos();
+const gigpos = useStore();
 
 </script>
  
 <template>
-  <SideNav :page="gigpos.pageName" />
+  <SideNav :page=gigpos.pageName />
   <section class="main container box-border relative w-full">
     <TopNav />
     <div class="box-border my-10 flex">

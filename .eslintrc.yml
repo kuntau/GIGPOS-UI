@@ -6,8 +6,8 @@ env:
 extends: 
   - 'eslint:recommended'
   - '@vue/typescript/recommend'
+  - 'plugin:vue/vue3-recommended'
   - 'prettier'
-  # - 'plugin:vue/vue3-recommended'
   # - 'plugin:@typescipt-eslint/eslint-recommend'
   # - 'plugin:@typescipt-eslint/recommend'
 globals:
@@ -23,6 +23,6 @@ plugins:
   # - '@typescript-eslint'
 rules:
   prettier/prettier:
-  - 'warn'
-  - singleQuote: true
-    semi: false
+    - 'warn'
+    - singleQuote: true
+      semi: false

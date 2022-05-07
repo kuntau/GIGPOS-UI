@@ -1,83 +1,45 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
+import { faker } from '@faker-js/faker';
 
 const customerHover = ref(false);
 const listHover = ref(-1);
 const taxRate = 6;
 const discount = 20;
 
-const currentSale = [
-  {
-    name: 'Nasi Lemak',
-    price: 4.0,
-    quantity: 1,
-    subTotal: 0,
-    addon: [
-      {
-        name: 'Ayam goreng',
-        price: 3.5,
-        quantity: 1,
-      },
-      {
-        name: 'Sambal kerang',
-        price: 2.5,
-        quantity: 1,
-      },
-    ],
-  },
-  {
-    name: 'Mee Goreng Mamak',
-    price: 5.0,
-    quantity: 1,
-    subTotal: 0,
-    addon: [
-      {
-        name: 'Telur mata',
-        price: 1.5,
-        quantity: 1,
-      },
-    ],
-  },
-  {
-    name: 'Roti Bakar',
-    price: 2.0,
-    quantity: 2,
-    subTotal: 0,
-  },
-  {
-    name: 'Chocolate Shake',
-    price: 6.9,
-    quantity: 1,
-    subTotal: 0,
-    addon: [
-      {
-        name: 'Extra whip',
-        price: 1.0,
-        quantity: 1,
-      },
-    ],
-  },
-  {
-    name: 'Hot Latte',
-    price: 4.9,
-    quantity: 2,
-    subTotal: 0,
-  },
+type Addon = Product[]
+
+interface Product {
+  name: string,
+  price: number,
+  quantity: number,
+  subTotal?: number,
+  addon?: Addon
+}
+  
+type CurrentSale = Product[]
+
+const currentSale: CurrentSale = [
+  { name: 'Nasi Lemak', price: 4.0, quantity: 1, subTotal: 0, addon: [ { name: 'Ayam goreng', price: 3.5, quantity: 1, }, { name: 'Sambal kerang', price: 2.5, quantity: 1, }, ], },
+  { name: 'Mee Goreng Mamak', price: 5.0, quantity: 1, subTotal: 0, addon: [ { name: 'Telur mata', price: 1.5, quantity: 1, }, ], },
+  { name: 'Roti Bakar', price: 2.0, quantity: 2, subTotal: 0, },
+  { name: 'Chocolate Shake', price: 6.9, quantity: 1, subTotal: 0, addon: [ { name: 'Extra whip', price: 1.0, quantity: 1, }, ], },
+  { name: 'Hot Latte', price: 4.9, quantity: 2, subTotal: 0, }
 ];
 
 // methods
-function formatPrice(price) {
+function formatPrice(price: string) {
   return Number.parseFloat(price).toFixed(2);
 }
-function formatPriceString(price) {
+function formatPriceString(price: string) {
   return 'RM' + formatPrice(price);
 }
-function totalPrice(items) {
+function totalPrice(items: Product) {
   let subtotal = items.price * items.quantity;
-  if ('addon' in items && items.addon.length > 0) {
-    items.addon.forEach((el) => (subtotal += el.price));
+  if ('addon' in items && items.addon!.length > 0) {
+    items.addon!.forEach((el: Product) => (subtotal += el.price));
   }
-  return formatPrice(subtotal);
+  return formatPrice(subtotal.toString());
 }
 
 // computed
@@ -85,13 +47,13 @@ const currentSaleSubTotal = computed(() => {
   let subtotal = 0; // weird this have to initialized else we got NaN
   currentSale.forEach((el) => {
     subtotal += el.price * el.quantity; // calculate price for main item
-    if ('addon' in el) el.addon.forEach((el) => (subtotal += el.price)); // calculate price for main's addon
+    if ('addon' in el) el.addon!.forEach((el) => (subtotal += el.price)); // calculate price for main's addon
   });
   return subtotal;
 });
 
 const currentSaleTotal = computed(() =>
-  formatPrice(currentSaleSubTotal.value + (currentSaleSubTotal.value * 6) / 100)
+  formatPrice(currentSaleSubTotal.value.toString() + (currentSaleSubTotal.value * 6) / 100)
 );
 </script>
 
@@ -132,31 +94,9 @@ const currentSaleTotal = computed(() =>
               ></a>
             </div>
             <ul class="m-4 mt-0">
-              <li class="py-1 border-b">
+              <li class="py-1 border-b" v-for="cust in 5" :key="cust">
                 <a class="text-blue-500" href="#"
-                  >John Doe <span class="text-gray-500 text-xs">#1234</span></a
-                >
-              </li>
-              <li class="py-1 border-b">
-                <a class="text-blue-500" href="#"
-                  >Kwang Soo <span class="text-gray-500 text-xs">#1234</span></a
-                >
-              </li>
-              <li class="py-1 border-b">
-                <a class="text-blue-500" href="#"
-                  >Janne Ram <span class="text-gray-500 text-xs">#1234</span></a
-                >
-              </li>
-              <li class="py-1 border-b">
-                <a class="text-blue-500" href="#"
-                  >Jack Black
-                  <span class="text-gray-500 text-xs">#1234</span></a
-                >
-              </li>
-              <li class="py-1">
-                <a class="text-blue-500" href="#"
-                  >Ram Karpal Singh
-                  <span class="text-gray-500 text-xs">#1234</span></a
+                  >{{ faker.name.firstName() }}, {{ faker.name.lastName() }} <span class="text-gray-500 text-xs">#1234</span></a
                 >
               </li>
             </ul>
@@ -182,7 +122,7 @@ const currentSaleTotal = computed(() =>
             :key="addonIndex"
             class="text-gray-500 text-sm card-list-item-detail"
           >
-            {{ addon.name }} &mdash; {{ formatPriceString(addon.price) }}
+            {{ addon.name }} &mdash; {{ formatPriceString(addon.price.toString()) }}
           </div>
         </div>
         <input
@@ -202,7 +142,7 @@ const currentSaleTotal = computed(() =>
       </div>
       <div class="card-footer bg-white rounded-b mt-3 p-5 border-t">
         <p class="text-right text-gray-700 font-normal tracking-wide">
-          Sub total : {{ formatPriceString(currentSaleSubTotal) }}
+          Sub total : {{ formatPriceString(currentSaleSubTotal.toString()) }}
         </p>
         <p class="text-right text-gray-700 font-normal tracking-wide">
           Tax : {{ taxRate }}%

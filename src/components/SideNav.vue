@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { useRouter, useRoute } from 'vue-router';
+import { useCounter } from '../stores/gigpos';
 
 const router = useRouter();
 const route = useRoute();
+const counter = useCounter();
 
 const sideNavMain = [
   {
@@ -25,7 +27,7 @@ const sideNavMain = [
   },
 ]
 
-  const sideNavReport = [
+const sideNavReport = [
   {
     name: 'Reports',
     url: 'reports.html',
@@ -51,7 +53,7 @@ const sideNavMain = [
     active: false
   },
 ]
-  const sideNavHelp = [
+const sideNavHelp = [
   {
     name: 'Settings',
     url: 'settings.html',
@@ -105,7 +107,12 @@ defineProps<{
         </li>
         <li class="flex-grow px-2 py-1">
           <a class="text-core font-normal tracking-wide text-gray-700 hover:text-blue-700" @click="openInbox()" href="#">
-            <i class="fad fa-cog"></i> {{ route.path }}
+            <i class="fad fa-cog"></i> {{ counter.count }}
+          </a>
+        </li>
+        <li class="flex-grow px-2 py-1">
+          <a class="text-core font-normal tracking-wide text-gray-700 hover:text-blue-700" @click="openInbox()" href="#">
+            <i class="fad fa-file"></i> {{ page }}
           </a>
         </li>
       </ul>
