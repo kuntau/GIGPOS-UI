@@ -1,24 +1,36 @@
 import { defineStore, acceptHMRUpdate } from 'pinia';
 
 const categories = [
-  [ 'Favorite', 'fad fa-stars' ],
-  [ 'Foods', 'fad fa-utensils' ],
-  [ 'File', 'fad fa-file' ],
-  [ 'Cold drinks', 'fad fa-beer' ],
-  [ 'Hot drinks', 'fad fa-coffee' ],
-  [ 'Search', 'fad fa-search' ],
-  [ 'Repeat', 'fad fa-cogs' ],
-  [ 'Foods', 'fad fa-utensils' ],
-  [ 'Cold drinks', 'fad fa-beer' ],
-  [ 'Hot drinks', 'fad fa-coffee' ],
-  [ 'Search', 'fad fa-search' ],
-  [ 'Repeat', 'fad fa-cogs' ],
+  [ '',            'fad fa-search',   0, ],
+  [ '',            'fad fa-stars',    1, ],
+  [ 'Malay',       'fad fa-utensils', 2, ],
+  [ 'Western',     'fad fa-utensils', 3, ],
+  [ 'Cold drinks', 'fad fa-beer',     4, ],
+  [ 'Hot drinks',  'fad fa-coffee',   5, ],
+  [ 'Search',      'fad fa-search',   6, ],
+  [ 'Repeat',      'fad fa-cogs',     7, ],
 ];
+
+interface Product {
+  productId: number
+  productName: string
+  price: number
+}
+
+interface Category {
+  categoryId: number
+  categoryName: string
+}
+
+const productList = await fetch('http://localhost:3000/data/products.json')
+  .then(res => res.json())
+  .then(data => data)
 
 const useProducts = defineStore('products', {
   state: () => ({
     categories,
-    tabActive: 1,
+    productList,
+    tabActive: 2,
   }),
   actions: {
     selectTab(index: number) {
@@ -31,4 +43,5 @@ if (import.meta.hot) {
     import.meta.hot.accept(acceptHMRUpdate(useProducts, import.meta.hot));
 }
 
+export type { Product, Category }
 export { useProducts }
