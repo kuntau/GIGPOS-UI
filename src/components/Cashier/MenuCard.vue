@@ -3,11 +3,14 @@ import { ref } from 'vue';
 import { faker } from '@faker-js/faker';
 import TabScroller from '@/components/Cashier/TabScroller.vue'
 import { useProducts } from '../../stores/products';
+import type { Product, Category } from '../../stores/products'
 
 const products = useProducts();
 const city = faker.address.city();
+const productList: Category[] = products.productList;
+const categories = productList.map((el => el.categoryName))
 
-const imageURL = 'https://loremflickr.com/160/80/food';
+const imageURL = ref('https://loremflickr.com/160/80/food');
 
 const menus = [
   { id: 1, name: 'Bread', imageURL: faker.image.food(160, 100, true) },
@@ -41,7 +44,7 @@ defineProps<{
           :key="index"
           class="h-25 bg-gray-200 text-gray-500 shadow bg-cover"
         >
-          <img class="overflow-hidden" :src="menu.imageURL" alt="" />
+          <img class="overflow-hidden" :src="menu.imageURL" :alt="menu.name" />
         </div>
       </div>
     </div>
@@ -49,6 +52,7 @@ defineProps<{
       <a class="inline-block mr-2" href="#">{{ city }}</a>
       <a class="inline-block mr-2" href="#">{{ page }}</a>
       <a class="inline-block mr-2" href="#">{{ products.tabActive }}</a>
+      <a class="inline-block mr-2" href="#">{{ productList.map(el => el.categoryName) }}</a>
     </div>
   </div>
 </template>
