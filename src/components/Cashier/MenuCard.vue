@@ -2,11 +2,13 @@
 import { ref } from 'vue';
 import { faker } from '@faker-js/faker';
 import TabScroller from '@/components/Cashier/TabScroller.vue'
+import MenuItem from '@/components/Cashier/MenuItem.vue'
 import { useProducts } from '../../stores/products';
 import type { Product, Category } from '../../stores/products'
 
 const products = useProducts();
 const city = faker.address.city();
+// const lastProduct = ref()
 const productList: Category[] = products.productList;
 const categories = productList.map((el => el.categoryName))
 
@@ -39,13 +41,11 @@ defineProps<{
     </div>
     <div class="card-content py-4 px-0">
       <div class="grid grid-cols-4 gap-4 text-center">
-        <div
+        <MenuItem
           v-for="(menu, index) in menus"
           :key="index"
-          class="h-25 bg-gray-200 text-gray-500 shadow bg-cover"
-        >
-          <img class="overflow-hidden" :src="menu.imageURL" :alt="menu.name" />
-        </div>
+          :menuItem=menu
+        />
       </div>
     </div>
     <div class="card-footer shadow-lg rounded-b p-2">

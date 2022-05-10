@@ -11,13 +11,13 @@ const categories = [
   [ 'Repeat',      'fad fa-cogs',     7, ],
 ];
 
-interface Product {
+export interface Product {
   productId: number
   productName: string
   price: number
 }
 
-interface Category {
+export interface Category {
   categoryId: number
   categoryName: string
 }
@@ -43,5 +43,5 @@ if (import.meta.hot) {
     import.meta.hot.accept(acceptHMRUpdate(useProducts, import.meta.hot));
 }
 
-export type { Product, Category }
+// export type { Product, Category }
 export { useProducts }
