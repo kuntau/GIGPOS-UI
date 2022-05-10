@@ -20,13 +20,28 @@
     "categoryName": "Malay Foods",
     "products": [
       {
-        "productId": 5,
+        "productId": 1,
         "productName": "Nasi Lemak",
         "price": 3.5
       },
       {
-        "productId": 6,
+        "productId": 2,
+        "productName": "Nasi Goreng Kampung",
+        "price": 5
+      },
+      {
+        "productId": 3,
+        "productName": "Nasi Goreng Cina",
+        "price": 5
+      },
+      {
+        "productId": 4,
         "productName": "Mee Goreng Mamak",
+        "price": 5
+      },
+      {
+        "productId": 5,
+        "productName": "Tomyam",
         "price": 5
       }
     ]
@@ -68,12 +83,12 @@
       "categoryName": "Hot",
       "products": [
         {
-          "productId": 15,
+          "productId": 35,
           "productName": "Coffee",
           "price": 3.5
         },
         {
-          "productId": 16,
+          "productId": 36,
           "productName": "Latte",
           "price": 5
         }

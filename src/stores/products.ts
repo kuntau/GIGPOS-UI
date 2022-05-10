@@ -20,9 +20,10 @@ export interface Product {
 export interface Category {
   categoryId: number
   categoryName: string
+  products: Product[]
 }
 
-const productList = await fetch('http://localhost:3000/data/products.json')
+const productList: Category[] = await fetch('http://localhost:3000/data/products.json')
   .then(res => res.json())
   .then(data => data)
 

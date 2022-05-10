@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { faker } from '@faker-js/faker';
+import { computed } from 'vue'
+import { faker } from '@faker-js/faker'
 import TabScroller from '@/components/Cashier/TabScroller.vue'
 import MenuItem from '@/components/Cashier/MenuItem.vue'
-import { useProducts } from '../../stores/products';
-import type { Product, Category } from '../../stores/products'
+import { useProducts } from '../../stores/products'
+import type { Category } from '../../stores/products'
 
 const products = useProducts();
 const city = faker.address.city();
@@ -12,18 +12,11 @@ const city = faker.address.city();
 const productList: Category[] = products.productList;
 const categories = productList.map((el => el.categoryName))
 
-const imageURL = ref('https://loremflickr.com/160/80/food');
-
-const menus = [
-  { id: 1, name: 'Bread', imageURL: faker.image.food(160, 100, true) },
-  { id: 2, name: 'Chai', imageURL: faker.image.food(160, 100, true) },
-  { id: 3, name: 'Steak', imageURL: faker.image.food(160, 100, true) },
-  { id: 4, name: 'Ketum', imageURL: faker.image.food(160, 100, true) },
-  { id: 5, name: 'Bread', imageURL: faker.image.food(160, 100, true) },
-  { id: 6, name: 'Chai', imageURL: faker.image.food(160, 100, true) },
-  { id: 7, name: 'Steak', imageURL: faker.image.food(160, 100, true) },
-  { id: 8, name: 'Ketum', imageURL: faker.image.food(160, 100, true) },
-];
+// const activeTab = 
+const menus = computed(() => {
+  const index = products.tabActive > 0 ? products.tabActive - 1 : 0
+  return productList[index].products
+})
 
 defineProps<{
   page: string
@@ -42,9 +35,9 @@ defineProps<{
     <div class="card-content py-4 px-0">
       <div class="grid grid-cols-4 gap-4 text-center">
         <MenuItem
-          v-for="(menu, index) in menus"
+          v-for="(product, index) in menus"
           :key="index"
-          :menuItem=menu
+          :menuItem=product
         />
       </div>
     </div>
@@ -52,7 +45,7 @@ defineProps<{
       <a class="inline-block mr-2" href="#">{{ city }}</a>
       <a class="inline-block mr-2" href="#">{{ page }}</a>
       <a class="inline-block mr-2" href="#">{{ products.tabActive }}</a>
-      <a class="inline-block mr-2" href="#">{{ productList.map(el => el.categoryName) }}</a>
+      <a class="inline-block mr-2" href="#">{{ categories }}</a>
     </div>
   </div>
 </template>
