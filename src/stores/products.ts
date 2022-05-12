@@ -1,16 +1,5 @@
 import { defineStore, acceptHMRUpdate } from 'pinia';
 
-const categories = [
-  [ '',            'fad fa-search',   0, ],
-  [ '',            'fad fa-stars',    1, ],
-  [ 'Malay',       'fad fa-utensils', 2, ],
-  [ 'Western',     'fad fa-utensils', 3, ],
-  [ 'Cold drinks', 'fad fa-beer',     4, ],
-  [ 'Hot drinks',  'fad fa-coffee',   5, ],
-  [ 'Search',      'fad fa-search',   6, ],
-  [ 'Repeat',      'fad fa-cogs',     7, ],
-];
-
 export interface Product {
   productId: number
   productName: string
@@ -20,6 +9,7 @@ export interface Product {
 export interface Category {
   categoryId: number
   categoryName: string
+  categoryIcon: string
   products: Product[]
 }
 

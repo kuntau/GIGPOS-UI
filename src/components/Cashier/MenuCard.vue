@@ -10,11 +10,11 @@ const products = useProducts();
 const city = faker.address.city();
 // const lastProduct = ref()
 const productList: Category[] = products.productList;
-const categories = productList.map((el => el.categoryName))
+const categories = productList.map((el => [ el.categoryName, el.categoryIcon ]))
 
 // const activeTab = 
 const menus = computed(() => {
-  const index = products.tabActive > 0 ? products.tabActive - 1 : 0
+  const index = products.tabActive > 0 ? products.tabActive : 0
   return productList[index].products
 })
 
@@ -30,7 +30,9 @@ defineProps<{
       <h2 class="text-xl text-gray-700 font-medium tracking-wide">Items</h2>
     </div>
     <div class="card-header rounded shadow-md relative flex">
-      <TabScroller />
+      <TabScroller
+        :tabItems=categories
+      />
     </div>
     <div class="card-content py-4 px-0">
       <div class="grid grid-cols-4 gap-4 text-center">
@@ -45,7 +47,6 @@ defineProps<{
       <a class="inline-block mr-2" href="#">{{ city }}</a>
       <a class="inline-block mr-2" href="#">{{ page }}</a>
       <a class="inline-block mr-2" href="#">{{ products.tabActive }}</a>
-      <a class="inline-block mr-2" href="#">{{ categories }}</a>
     </div>
   </div>
 </template>
