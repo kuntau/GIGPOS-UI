@@ -1,0 +1,120 @@
+[
+  {
+    "categoryId": 0,
+    "categoryName": "Favorite",
+    "categoryIcon": "fad fa-stars",
+    "products": [
+      {
+        "productId": 5,
+        "productName": "Nasi Lemak",
+        "price": 3.5
+      },
+      {
+        "productId": 6,
+        "productName": "Mee Goreng Mamak",
+        "price": 5
+      }
+    ]
+  },
+  {
+    "categoryId": 1,
+    "categoryName": "Malay Foods",
+    "categoryIcon": "fad fa-utensils",
+    "products": [
+      {
+        "productId": 1,
+        "productName": "Nasi Lemak",
+        "price": 3.5
+      },
+      {
+        "productId": 2,
+        "productName": "Nasi Goreng Kampung",
+        "price": 5
+      },
+      {
+        "productId": 3,
+        "productName": "Nasi Goreng Cina",
+        "price": 5
+      },
+      {
+        "productId": 4,
+        "productName": "Mee Goreng Mamak",
+        "price": 5
+      },
+      {
+        "productId": 5,
+        "productName": "Tomyam",
+        "price": 5
+      }
+    ]
+  },
+  {
+    "categoryId": 2,
+    "categoryName": "Western Foods",
+    "categoryIcon": "fad fa-burger-soda",
+    "products": [
+      {
+        "productId": 20,
+        "productName": "Chicken Chop",
+        "price": 13.5
+      },
+      {
+        "productId": 21,
+        "productName": "Lamb Chop",
+        "price": 15
+      }
+    ]
+  },
+  {
+    "categoryId": 3,
+    "categoryName": "Cold",
+    "categoryIcon": "fad fa-beer",
+    "products": [
+      {
+        "productId": 10,
+        "productName": "Milo ais",
+        "price": 3.5
+      },
+      {
+        "productId": 11,
+        "productName": "Nescafe ais",
+        "price": 5
+      }
+    ]
+  },
+  {
+    "categoryId": 4,
+    "categoryName": "Hot",
+    "categoryIcon": "fad fa-coffee",
+    "products": [
+      {
+        "productId": 35,
+        "productName": "Coffee",
+        "price": 3.5
+      },
+      {
+        "productId": 36,
+        "productName": "Latte",
+        "price": 5
+      }
+    ]
+  },
+  {
+    "categoryId": 5,
+    "categoryName": "Addons",
+    "categoryIcon": "fad fa-plus",
+    "products": []
+  },
+  {
+    "categoryId": 6,
+    "categoryName": "Search",
+    "categoryIcon": "fad fa-search",
+    "products": []
+  },
+  {
+    "categoryId": 7,
+    "categoryName": "Final",
+    "categoryIcon": "fad fa-gears",
+    "products": []
+  }
+]

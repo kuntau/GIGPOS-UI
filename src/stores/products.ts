@@ -1,24 +1,26 @@
 import { defineStore, acceptHMRUpdate } from 'pinia';
 
-const categories = [
-  [ 'Favorite', 'fad fa-stars' ],
-  [ 'Foods', 'fad fa-utensils' ],
-  [ 'File', 'fad fa-file' ],
-  [ 'Cold drinks', 'fad fa-beer' ],
-  [ 'Hot drinks', 'fad fa-coffee' ],
-  [ 'Search', 'fad fa-search' ],
-  [ 'Repeat', 'fad fa-cogs' ],
-  [ 'Foods', 'fad fa-utensils' ],
-  [ 'Cold drinks', 'fad fa-beer' ],
-  [ 'Hot drinks', 'fad fa-coffee' ],
-  [ 'Search', 'fad fa-search' ],
-  [ 'Repeat', 'fad fa-cogs' ],
-];
+export interface Product {
+  productId: number
+  productName: string
+  price: number
+}
+
+export interface Category {
+  categoryId: number
+  categoryName: string
+  categoryIcon: string
+  products: Product[]
+}
+
+const productList: Category[] = await fetch('http://localhost:3000/data/products.json')
+  .then(res => res.json())
+  .then(data => data)
 
 const useProducts = defineStore('products', {
   state: () => ({
-    categories,
-    tabActive: 1,
+    productList,
+    tabActive: 2,
   }),
   actions: {
     selectTab(index: number) {
@@ -31,4 +33,5 @@ if (import.meta.hot) {
     import.meta.hot.accept(acceptHMRUpdate(useProducts, import.meta.hot));
 }
 
+// export type { Product, Category }
 export { useProducts }

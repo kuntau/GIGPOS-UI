@@ -5,22 +5,24 @@ import { useProducts } from '../../stores/products';
 interface ScrollTo {
   (element: HTMLDivElement, step: number, duration: number): void
 }
-// type ScrollTo= (element: HTMLDivElement, step: number, duration: number) => void
+
+type TabItem = string
 
 const products = useProducts();
-
-const categories = ref(products.categories);
-// const wrapper = ref<HTMLDivElement | null>(null)
 const wrapper = ref()
 
+// Animation part
 const step = 200
 const duration = 200
+
 const tabGoLeft = () => {
   scrollTo(wrapper.value, -step, duration)
 }
+
 const tabGoRight = () => {
   scrollTo(wrapper.value as HTMLDivElement, step, duration)
 }
+
 const scrollTo: ScrollTo = (element, step, duration) => {
   const scrollPos = element.scrollLeft
 
@@ -43,20 +45,25 @@ const scrollTo: ScrollTo = (element, step, duration) => {
   }
 }
 
-const selectCategory = (index: number) => {
-  products.tabActive = index
-}
-
+defineProps<{
+  tabItems: TabItem[]
+}>()
 </script>
 
 <template>
-  <button class="rounded-l border-r" @click="tabGoLeft"><i class="fad fa-chevron-left"></i></button>
+  <button class="rounded-l" @click="tabGoLeft"><i class="fad fa-chevron-left"></i></button>
+  <button class="border-x" @click="tabGoLeft"><i class="fad fa-search"></i></button>
   <div ref="wrapper" class="whitespace-nowrap flex-auto flex overflow-x-hidden w-full">
-    <a class="tab px-4 py-4 font-normal hover:bg-slate-100 border-r cursor-pointer" @click="products.selectTab(index)" :class="{ active: index === products.tabActive }" v-for="(category, index) in categories" :key="index">
-      <i :class="category[1]"></i> {{ category[0] }}
+    <a
+      class="tab px-4 py-4 font-normal hover:bg-slate-100 border-r cursor-pointer" 
+      @click="products.selectTab(index)" 
+      :class="{ active: index === products.tabActive }" 
+      v-for="(item, index) in tabItems" :key="index"
+    >
+      <i :class="item[1]"></i> {{ item[0] }}
     </a>
   </div>
-  <button class="rounded-r" @click="tabGoRight"><i class="fad fa-chevron-right"></i></button>
+  <button class="rounded-r border-l" @click="tabGoRight"><i class="fad fa-chevron-right"></i></button>
 </template>
 
 <style scoped>
@@ -78,5 +85,6 @@ a.active {
 .tab:last-child {
   /* @apply flex-1 text-green-700; */
   color: red;
+  border: none;
 }
 </style>
