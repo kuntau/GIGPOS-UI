@@ -19,7 +19,6 @@ const productList: Category[] = await fetch('http://localhost:3000/data/products
 
 const useProducts = defineStore('products', {
   state: () => ({
-    categories,
     productList,
     tabActive: 2,
   }),

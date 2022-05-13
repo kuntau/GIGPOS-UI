@@ -51,7 +51,7 @@
   {
     "categoryId": 2,
     "categoryName": "Western Foods",
-    "categoryIcon": "fad fa-utensils",
+    "categoryIcon": "fad fa-burger-soda",
     "products": [
       {
         "productId": 20,

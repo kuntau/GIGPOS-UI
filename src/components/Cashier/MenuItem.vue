@@ -4,10 +4,16 @@ import type { Product } from '../../stores/products'
 
 interface MenuItem extends Product {
   imageURL: string
-  // price?: number
 }
 
 // const imageURL = 'https://loremflickr.com/160/80/food';
+const imageURL = faker.image.food(160, 100, true)
+const style = { 
+  backgroundImage: `url("${imageURL}")`,
+  backgroundSize: 'cover'
+}
+
+const addToCart = (item) => console.log(`${item} added to cart`)
 
 defineProps<{
  menuItem: MenuItem
@@ -15,18 +21,16 @@ defineProps<{
 </script>
 
 <template>
-  <div class="flex">
-    <a :href="'addToCart/' + menuItem.productId" class="h-25 bg-gray-200 text-gray-500 shadow bg-cover">
-      <img class="overflow-hidden" :src="faker.image.food(160, 100, true)" :alt="menuItem.productName">
-      <span class="overflow-hidden">{{ menuItem.productName }}</span>
-    </a>
-
-  </div>
+  <a 
+    class="cursor-pointer"
+    @click="addToCart(menuItem.productId)"
+  >
+    <div class="flex flex-col-reverse w-full h-25 shadow" :style=style>
+      <span class="block text-sm font-medium bg-gray-800 bg-opacity-70 text-gray-100 overflow-hidden">{{ menuItem.productName }}</span>
+      <!-- <span class="block bg-gray-800 bg-opacity-50 text-gray-100 overflow-hidden">RM{{ menuItem.price }}</span> -->
+    </div>
+  </a>
 </template>
 
 <style scoped>
-.menu-item {
-  width: 160px;
-  height: 100px;
-}
 </style>
