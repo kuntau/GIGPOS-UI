@@ -4,7 +4,7 @@ const topNavRight = ['Logout', 'Kuntau'];
 </script>
 <template>
   <nav
-    class="top-nav sticky inset-0 box-border inline-flex flex-grow w-full h-auto py-1 overflow-hidden"
+    class="inset-0 inline-flex flex-grow w-full h-auto py-1"
   >
     <div class="top-nav-left flex flex-grow items-start">
       <ul class="flex self-center">

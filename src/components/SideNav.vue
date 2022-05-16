@@ -76,7 +76,7 @@ defineProps<{
 
 </script>
 <template>
-  <div class="sidebar fixed px-2 pl-5 py-3">
+  <div class="py-3">
     <div class="store text-blue-800 font-medium px-1 py-2 mb-3">
       <a class="overflow-hidden" href="#">
         <span class="font-black bg-white p-2 rounded-full shadow mr-1"><i class="fad fa-store"></i></span> Gets Global <span class="font-black fas fa-chevron-down"></span></a>

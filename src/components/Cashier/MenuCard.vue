@@ -25,14 +25,14 @@ defineProps<{
 </script>
 
 <template>
-  <div class="card my-2 w-8/12">
+  <div class="card">
     <div class="card-header p-5 border-b hidden">
       <h2 class="text-xl text-gray-700 font-medium tracking-wide">Items</h2>
     </div>
     <div class="card-header rounded shadow-md relative flex">
-      <TabScroller
-        :tabItems=categories
-      />
+      <!-- <TabScroller -->
+      <!--   :tabItems=categories -->
+      <!-- /> -->
     </div>
     <div class="card-content py-4 px-0">
       <div class="grid grid-cols-4 gap-4 text-center">
@@ -59,5 +59,9 @@ defineProps<{
 .card-content {
   background-color: transparent;
 }
-
+.menuitem-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 200px));
+  gap: 10px;
+}
 </style>

@@ -59,7 +59,7 @@ const currentSaleTotal = computed(() =>
 
 <template>
   <div
-    class="card relative flex flex-col bg-card-bg my-2 bg-white shadow-lg rounded w-4/12 ml-3"
+    class="card flex flex-col bg-card-bg bg-white shadow-lg rounded relative"
   >
     <div class="card-header bg-white rounded-t border-b flex">
       <h2 class="text-lg text-gray-700 font-semibold tracking-wide py-4 mx-4">
@@ -180,10 +180,10 @@ const currentSaleTotal = computed(() =>
   margin-top: 0.2rem;
   /* background-color: var(--pink); */
 }
-.card-header > .chevron-left {
-  /* top: 8px; */
-  /* left: -15px; */
-}
+/* .card-header > .chevron-left { */
+/*   top: 8px; */
+/*   left: -15px; */
+/* } */
 .card-list-quantity {
   background-color: var(--card-bg-color);
 }
