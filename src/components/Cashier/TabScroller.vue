@@ -51,10 +51,10 @@ defineProps<{
 </script>
 
 <template>
-  <div class="inline-flex">
+  <div class="flex w-1/2">
     <button class="rounded-l" @click="tabGoLeft"><i class="fad fa-chevron-left"></i></button>
     <button class="border-x" @click="tabGoLeft"><i class="fad fa-search"></i></button>
-    <div ref="wrapper" class="whitespace-nowrap flex-auto flex overflow-x-hidden w-auto">
+    <div ref="wrapper" class="whitespace-nowrap flex flex-shrink flex-grow overflow-x-hidden">
       <a
         class="tab px-4 py-4 font-normal hover:bg-slate-100 border-r cursor-pointer" 
         @click="products.selectTab(index)" 

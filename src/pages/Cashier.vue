@@ -11,15 +11,15 @@ const CashierStyle1 = {
 }
 
 const MenuCardStyle = {
-  flex: '1',
-  gridArea: 'MenuCard'
+  // width: 'fit-content',
+  width: '100%',
+  flex: '1 1 auto',
 }
 
 const SalesCardStyle = {
   // width: '300px'
   marginLeft: '10px',
   flex: '0 0 330px',
-  gridArea: 'SalesCard'
 }
 
 defineProps<{

@@ -26,14 +26,13 @@ defineProps<{
 
 <template>
   <div class="card">
-    <div class="card-header p-5 border-b hidden">
+    <div class="card-header p-4 border-b shadow-sm mb-2 hidden">
       <h2 class="text-xl text-gray-700 font-medium tracking-wide">Items</h2>
     </div>
-    <div class="card-header rounded shadow-md relative flex">
-      <!-- <TabScroller -->
-      <!--   :tabItems=categories -->
-      <!-- /> -->
-    </div>
+    <TabScroller
+      class="card-header rounded shadow-md"
+      :tabItems=categories
+    />
     <div class="card-content py-4 px-0">
       <div class="grid grid-cols-4 gap-4 text-center">
         <MenuItem
