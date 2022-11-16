@@ -12,14 +12,13 @@ const gigpos = useStore();
 </script>
  
 <template>
-  <SideNav :page=gigpos.pageName />
-  <section class="main container box-border relative w-full">
-    <TopNav />
-    <div class="box-border my-10 flex">
-      <router-view :page=route.path />
-      <!-- <router-view :key="$route.path" v-show="showPage" @ready="pageReady" /> -->
-    </div>
-  </section>
+  <!-- <div class="box-border wrapper content-center"> -->
+    <SideNav :page=gigpos.pageName class="sidebar" />
+    <!-- <section class="main"> -->
+      <TopNav class="topbar" />
+      <router-view :page=route.path class="main mt-4" />
+    <!-- </section> -->
+  <!-- </div> -->
 </template>
 
 <style>
@@ -70,16 +69,32 @@ const gigpos = useStore();
 }
 
 .wrapper {
-  min-width: 1024px;
+  /* min-width: 1024px; */
+  display: grid; 
+  grid-template-columns: 240px 1fr; 
+  grid-template-rows: 64px 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "SideBar TopBar"
+    "SideBar Main"; 
 }
 
 .sidebar {
-  width: 240px;
-  z-index: 10;
+  /* width: 240px; */
+  /* z-index: 10; */
+  grid-area: SideBar;
 }
+.topbar {
+  grid-area: TopBar;
+}
+.main {
+  /* width: calc(100%-440px); */
 
-section.main {
-  padding-left: 240px;
+  /* 2 grid */
+  grid-area: Main;
+
+  /* 3 grid */
+  /* grid-area: 2 / 2 / 3 / 3;  */
 }
 
 /* links */

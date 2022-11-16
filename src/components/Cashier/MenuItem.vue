@@ -13,7 +13,7 @@ const style = {
   backgroundSize: 'cover'
 }
 
-const addToCart = (item) => console.log(`${item} added to cart`)
+const addToCart = (item: Product) => console.log(`${item} added to cart`)
 
 defineProps<{
  menuItem: MenuItem
@@ -23,10 +23,10 @@ defineProps<{
 <template>
   <a 
     class="cursor-pointer"
-    @click="addToCart(menuItem.productId)"
+    @click="addToCart(menuItem)"
   >
     <div class="flex flex-col-reverse w-full h-25 shadow" :style=style>
-      <span class="block text-sm font-medium bg-gray-800 bg-opacity-70 text-gray-100 overflow-hidden">{{ menuItem.productName }}</span>
+      <span class="block text-sm font-medium bg-gray-800/60 text-gray-100 overflow-hidden">{{ menuItem.productName }}</span>
       <!-- <span class="block bg-gray-800 bg-opacity-50 text-gray-100 overflow-hidden">RM{{ menuItem.price }}</span> -->
     </div>
   </a>
