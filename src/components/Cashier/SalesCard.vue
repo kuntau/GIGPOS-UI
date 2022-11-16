@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import { faker } from '@faker-js/faker';
+import CustomerSelection from '@/components/Cashier/CustomerSelection.vue'
 
-const customerHover = ref(false);
+const customerSelectionPopup = ref(false);
 const listHover = ref(-1);
 const taxRate = 6;
 const discount = 20;
@@ -62,46 +62,17 @@ const currentSaleTotal = computed(() =>
     class="card flex flex-col bg-card-bg bg-white shadow-lg rounded relative"
   >
     <div class="card-header bg-white rounded-t border-b flex">
-      <h2 class="text-lg text-gray-700 font-semibold tracking-wide py-4 mx-4">
-        Current Sale
-      </h2>
+      <h3 class="text-lg text-gray-700 font-semibold tracking-wide py-4 mx-4">
+        Cart
+      </h3>
       <div
-        class="flex-grow text-right text-lg text-gray-700 border-l p-4"
-        @mouseover="customerHover = true"
-        @mouseleave="customerHover = false"
+        class="flex-grow text-right text-lg text-gray-700 border-l p-4 cursor-pointer"
+        @click="customerSelectionPopup = !customerSelectionPopup"
       >
+        <!-- @mouseover="customerSelectionPopup = true" -->
+        <!-- @mouseleave="customerSelectionPopup = false" -->
         <p>Customer345 <span class="ml-2 far fa-chevron-circle-down"></span></p>
-        <transition name="fade">
-          <div
-            v-if="customerHover"
-            class="popover popover-customer bg-white bhadow absolute rounded border z-10"
-            @mouseover="customerHover = true"
-            @mouseleave="customerHover = false"
-          >
-            <div class="flex m-4">
-              <input
-                id=""
-                class="px-2 flex-1 border rounded shadow-xs"
-                type="text"
-                name="customer-search"
-                placeholder="Search customer"
-              />
-              <a
-                href="#"
-                class="ml-2 pl-2 align-text-bottom"
-                title="Add new customer"
-                ><i class="fas fa-plus-square text-3xl"></i
-              ></a>
-            </div>
-            <ul class="m-4 mt-0">
-              <li class="py-1 border-b" v-for="cust in 5" :key="cust">
-                <a class="text-blue-500" href="#"
-                  >{{ faker.name.firstName() }}, {{ faker.name.lastName() }} <span class="text-gray-500 text-xs">#1234</span></a
-                >
-              </li>
-            </ul>
-          </div>
-        </transition>
+        <CustomerSelection v-if=customerSelectionPopup />
       </div>
     </div>
 
@@ -194,46 +165,4 @@ const currentSaleTotal = computed(() =>
   background-color: var(--card-bg-color);
 }
 
-/* POPOVER STLYE */
-.popover-customer {
-  /* position: relative; */
-  background-color: #333;
-  background-color: var(--bg-dark);
-  width: 90%;
-  top: 50px;
-  margin-left: -39%;
-}
-.popover:before {
-  position: absolute;
-  z-index: 1;
-  top: -20px;
-  left: 70%;
-  content: '';
-  border-style: solid;
-  border-width: 10px;
-  border-color: transparent transparent #222 transparent;
-}
-.popover:after {
-  position: absolute;
-  z-index: 1;
-  top: -20px;
-  left: 70%;
-  content: '';
-  border-style: solid;
-  border-width: 10px;
-  border-color: transparent transparent var(--bg-dark) transparent;
-}
-.popover > .arrow {
-  text-transform: uppercase;
-}
-.fade-enter-active {
-  transition: all 0.2s ease-in;
-}
-.fade-leave-active {
-  transition: all 0.1s ease-out;
-}
-.fade-enter,
-.fade-leave-to {
-  transform: translateY(5px);
-}
 </style>
