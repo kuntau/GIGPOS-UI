@@ -4,7 +4,7 @@ import SalesCard from '@/components/Cashier/SalesCard.vue';
 
 const CashierStyle = {
   display: 'grid',
-  gridTemplateColumns: 'minmax(55%, 1fr) 320px',
+  gridTemplateColumns: 'minmax(55%, 1fr) 400px',
   gridTemplateRows: '1fr',
   gap: '0px 10px',
   gridTemplateAreas: '"MenuCard SalesCard"'
@@ -13,12 +13,12 @@ const CashierStyle = {
 const MenuCardStyle = {
   minWidth: '0',
   maxWidth: '100%',
-  flex: '0 1 auto',
+  /* flex: '0 1 auto', */
 }
 
 const SalesCardStyle = {
   marginLeft: '10px',
-  flex: '0 0 330px',
+  /* flex: '0 0 330px', */
 }
 
 defineProps<{
