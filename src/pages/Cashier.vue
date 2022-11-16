@@ -2,7 +2,7 @@
 import MenuCard from  '@/components/Cashier/MenuCard.vue';
 import SalesCard from '@/components/Cashier/SalesCard.vue';
 
-const CashierStyle1 = {
+const CashierStyle = {
   display: 'grid',
   gridTemplateColumns: 'minmax(55%, 1fr) 320px',
   gridTemplateRows: '1fr',
@@ -11,13 +11,12 @@ const CashierStyle1 = {
 }
 
 const MenuCardStyle = {
-  // width: 'fit-content',
-  width: '100%',
-  flex: '1 1 auto',
+  minWidth: '0',
+  maxWidth: '100%',
+  flex: '0 1 auto',
 }
 
 const SalesCardStyle = {
-  // width: '300px'
   marginLeft: '10px',
   flex: '0 0 330px',
 }
@@ -28,7 +27,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="flex">
+  <div class="flex w-full" :style=CashierStyle>
     <MenuCard 
       :page=page 
       :style=MenuCardStyle

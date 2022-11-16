@@ -49,11 +49,11 @@ defineProps<{
   tabItems: TabItem[]
 }>()
 </script>
-
 <template>
-  <div class="flex w-1/2">
+  <!-- <div class="flex"> -->
     <button class="rounded-l" @click="tabGoLeft"><i class="fad fa-chevron-left"></i></button>
     <button class="border-x" @click="tabGoLeft"><i class="fad fa-search"></i></button>
+    <!-- <div ref="wrapper" class="flex truncate w-full"> -->
     <div ref="wrapper" class="whitespace-nowrap flex flex-shrink flex-grow overflow-x-hidden">
       <a
         class="tab px-4 py-4 font-normal hover:bg-slate-100 border-r cursor-pointer" 
@@ -65,7 +65,7 @@ defineProps<{
       </a>
     </div>
     <button class="rounded-r border-l" @click="tabGoRight"><i class="fad fa-chevron-right"></i></button>
-  </div>
+  <!-- </div> -->
 </template>
 
 <style scoped>

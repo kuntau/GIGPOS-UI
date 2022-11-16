@@ -12,13 +12,13 @@ const gigpos = useStore();
 </script>
  
 <template>
-  <div class="box-border wrapper content-center">
+  <!-- <div class="box-border wrapper content-center"> -->
     <SideNav :page=gigpos.pageName class="sidebar" />
     <!-- <section class="main"> -->
       <TopNav class="topbar" />
       <router-view :page=route.path class="main mt-4" />
     <!-- </section> -->
-  </div>
+  <!-- </div> -->
 </template>
 
 <style>
@@ -88,7 +88,7 @@ const gigpos = useStore();
   grid-area: TopBar;
 }
 .main {
-  width: calc(100%-440px);
+  /* width: calc(100%-440px); */
 
   /* 2 grid */
   grid-area: Main;
