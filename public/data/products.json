@@ -109,7 +109,83 @@
     "categoryId": 6,
     "categoryName": "Search",
     "categoryIcon": "fad fa-search",
-    "products": []
+    "products": [
+      {
+        "productId": 1,
+        "productName": "Nasi Lemak",
+        "price": 3.5
+      },
+      {
+        "productId": 2,
+        "productName": "Nasi Goreng Kampung",
+        "price": 5
+      },
+      {
+        "productId": 3,
+        "productName": "Nasi Goreng Cina",
+        "price": 5
+      },
+      {
+        "productId": 4,
+        "productName": "Mee Goreng Mamak",
+        "price": 5
+      },
+      {
+        "productId": 5,
+        "productName": "Tomyam",
+        "price": 5
+      },
+      {
+        "productId": 8,
+        "productName": "Nasi Lemak",
+        "price": 3.5
+      },
+      {
+        "productId": 9,
+        "productName": "Nasi Goreng Kampung",
+        "price": 5
+      },
+      {
+        "productId": 10,
+        "productName": "Nasi Goreng Cina",
+        "price": 5
+      },
+      {
+        "productId": 14,
+        "productName": "Mee Goreng Mamak",
+        "price": 5
+      },
+      {
+        "productId": 15,
+        "productName": "Tomyam",
+        "price": 5
+      },
+      {
+        "productId": 1,
+        "productName": "Nasi Lemak",
+        "price": 3.5
+      },
+      {
+        "productId": 2,
+        "productName": "Nasi Goreng Kampung",
+        "price": 5
+      },
+      {
+        "productId": 3,
+        "productName": "Nasi Goreng Cina",
+        "price": 5
+      },
+      {
+        "productId": 4,
+        "productName": "Mee Goreng Mamak",
+        "price": 5
+      },
+      {
+        "productId": 5,
+        "productName": "Tomyam",
+        "price": 5
+      }
+    ]
   },
   {
     "categoryId": 7,
