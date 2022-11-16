@@ -18,7 +18,7 @@
   },
   {
     "categoryId": 1,
-    "categoryName": "Malay Foods",
+    "categoryName": "Malay",
     "categoryIcon": "fad fa-utensils",
     "products": [
       {
@@ -50,7 +50,7 @@
   },
   {
     "categoryId": 2,
-    "categoryName": "Western Foods",
+    "categoryName": "Western",
     "categoryIcon": "fad fa-burger-soda",
     "products": [
       {
