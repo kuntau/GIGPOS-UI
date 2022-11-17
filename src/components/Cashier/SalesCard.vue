@@ -1,16 +1,17 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import CustomerSelection from '@/components/Cashier/CustomerSelection.vue'
+import { useCart } from '../../stores/cart'
 
+const cart = useCart();
 const customerSelectionPopup = ref(false);
-const listHover = ref(-1);
 const taxRate = 6;
 const discount = 20;
 
 type Addon = Product[]
 
 interface Product {
-  name: string,
+  productName: string,
   price: number,
   quantity: number,
   subTotal?: number,
@@ -19,13 +20,7 @@ interface Product {
   
 type CurrentSale = Product[]
 
-const currentSale: CurrentSale = [
-  { name: 'Nasi Lemak', price: 4.0, quantity: 1, subTotal: 0, addon: [ { name: 'Ayam goreng', price: 3.5, quantity: 1, }, { name: 'Sambal kerang', price: 2.5, quantity: 1, }, ], },
-  { name: 'Mee Goreng Mamak', price: 5.0, quantity: 1, subTotal: 0, addon: [ { name: 'Telur mata', price: 1.5, quantity: 1, }, ], },
-  { name: 'Roti Bakar', price: 2.0, quantity: 2, subTotal: 0, },
-  { name: 'Chocolate Shake', price: 6.9, quantity: 1, subTotal: 0, addon: [ { name: 'Extra whip', price: 1.0, quantity: 1, }, ], },
-  { name: 'Hot Latte', price: 4.9, quantity: 2, subTotal: 0, }
-];
+const currentSale = cart.cart
 
 // methods
 function formatPrice(price: string) {
@@ -85,13 +80,13 @@ const currentSaleTotal = computed(() =>
             :key="index"
           >
             <td class="pl-2">
-              {{ sale.name }}
+              {{ sale.productName }}
               <div
                 v-for="(addon, addonIndex) in sale.addon"
                 :key="addonIndex"
                 class="text-gray-500 text-sm card-list-item-detail"
               >
-                {{ addon.name }} &mdash; {{ formatPriceString(addon.price.toString()) }}
+                {{ addon.productName }} &mdash; {{ formatPriceString(addon.price.toString()) }}
               </div>
             </td>
             <td class="text-sm text-center align-top">{{ sale.quantity }}</td>

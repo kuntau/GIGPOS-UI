@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia';
+import { defineStore, acceptHMRUpdate } from 'pinia';
 
 type Addon = Product[]
 
@@ -32,6 +32,12 @@ const cart: Cart = [
       {
         productId: 9,
         productName: 'Sambal kerang',
+        price: 2.5,
+        quantity: 1,
+      },
+      {
+        productId: 132,
+        productName: 'Sambal Sotong',
         price: 2.5,
         quantity: 1,
       },
@@ -86,3 +92,7 @@ export const useCart = defineStore('cart', {
     cart,
   }),
 });
+
+if (import.meta.hot) {
+    import.meta.hot.accept(acceptHMRUpdate(useCart, import.meta.hot));
+}
