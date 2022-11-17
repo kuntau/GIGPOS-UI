@@ -77,41 +77,31 @@ const currentSaleTotal = computed(() =>
     </div>
 
     <div class="list-card-content flex-grow pt-3">
-      <div
-        v-for="(sale, index) in currentSale"
-        :key="index"
-        class="card-list flex px-5 relative"
-        @mouseover="listHover = index"
-        @mouseleave="listHover = -1"
-      >
-        <div class="card-list-item flex flex-col flex-grow">
-          <div class="text-gray-700 font-medium card-list-item-main">
-            {{ sale.name }}
-          </div>
-          <div
-            v-for="(addon, addonIndex) in sale.addon"
-            :key="addonIndex"
-            class="text-gray-500 text-sm card-list-item-detail"
+
+      <table class="card-list table w-full" >
+        <tbody clsss="text-green-900" >
+          <tr
+            v-for="(sale, index) in currentSale"
+            :key="index"
           >
-            {{ addon.name }} &mdash; {{ formatPriceString(addon.price.toString()) }}
-          </div>
-        </div>
-        <input
-          class="w-8 h-6 text-gray-700 card-list-quantity mr-2"
-          :value="sale.quantity"
-          type="number"
-        />
-        <div class="text-center text-gray-700 card-list-price">
-          {{ formatPriceString(totalPrice(sale)) }}
-        </div>
-        <a
-          v-show="listHover === index"
-          href="#"
-          class="card-list-delete absolute"
-          ><i class="fad fa-times-circle text-red-400 text-2xl"></i
-        ></a>
-      </div>
-      <div class="card-footer bg-white rounded-b mt-3 p-5 border-t">
+            <td class="pl-2">
+              {{ sale.name }}
+              <div
+                v-for="(addon, addonIndex) in sale.addon"
+                :key="addonIndex"
+                class="text-gray-500 text-sm card-list-item-detail"
+              >
+                {{ addon.name }} &mdash; {{ formatPriceString(addon.price.toString()) }}
+              </div>
+            </td>
+            <td class="text-sm text-center align-top">{{ sale.quantity }}</td>
+            <td class="pr-2 text-right align-top">{{ formatPriceString(totalPrice(sale))  }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Start subtotal section -->
+      <div class="card-footer bg-white p-5 border-t">
         <p class="text-right text-gray-700 font-normal tracking-wide">
           Sub total : {{ formatPriceString(currentSaleSubTotal.toString()) }}
         </p>
@@ -122,14 +112,17 @@ const currentSaleTotal = computed(() =>
           Discount : {{ discount }}%
         </p>
       </div>
+      <!-- Start total section -->
       <div class="card-footer bg-gray-200 rounded-b p-3 border-t flex">
+        <button class="px-3 ml-2 text-sm rounded text-white bg-red-500"><i class="far fa-times"></i></button>
+        <button class="px-3 pr-2 ml-2 text-sm rounded text-white bg-blue-500"><i class="far fa-edit"></i></button>
         <p
           class="text-xl text-right text-gray-700 font-medium tracking-wide flex-1"
         >
           Total: {{ formatPriceString(currentSaleTotal) }}
         </p>
-        <a class="text-xl px-3 ml-3 border-l" href="#"
-          ><i class="text-2xl hover:shadow-lg fad fa-cash-register"></i
+        <a class="text-xl px-2 ml-3" href="#"
+          ><i class="text-2xl text-green-500 hover:shadow-lg fad fa-cash-register"></i
         ></a>
       </div>
     </div>
@@ -140,29 +133,28 @@ const currentSaleTotal = computed(() =>
 .card {
   background-color: var(--card-bg-color);
 }
+
 .card-content {
   background-color: pink;
 }
+
 .card-footer:nth-child(odd) {
   background-color: var(--card-bg-color);
 }
 
 .card-list {
   margin-top: 0.2rem;
-  /* background-color: var(--pink); */
 }
-/* .card-header > .chevron-left { */
-/*   top: 8px; */
-/*   left: -15px; */
-/* } */
+
 .card-list-quantity {
   background-color: var(--card-bg-color);
 }
+
 .card-list-delete {
   right: -10px;
 }
+
 .bg-card-bg {
   background-color: var(--card-bg-color);
 }
-
 </style>
