@@ -1,0 +1,42 @@
+[
+  {
+    "categoryId": 0,
+    "categoryName": "Favorite",
+    "categoryIcon": "fad fa-stars"
+  },
+  {
+    "categoryId": 1,
+    "categoryName": "Malay",
+    "categoryIcon": "fad fa-utensils"
+  },
+  {
+    "categoryId": 2,
+    "categoryName": "Western",
+    "categoryIcon": "fad fa-burger-soda"
+  },
+  {
+    "categoryId": 3,
+    "categoryName": "Cold",
+    "categoryIcon": "fad fa-beer"
+  },
+  {
+    "categoryId": 4,
+    "categoryName": "Hot",
+    "categoryIcon": "fad fa-coffee"
+  },
+  {
+    "categoryId": 5,
+    "categoryName": "Addons",
+    "categoryIcon": "fad fa-plus"
+  },
+  {
+    "categoryId": 6,
+    "categoryName": "Search",
+    "categoryIcon": "fad fa-search"
+  },
+  {
+    "categoryId": 7,
+    "categoryName": "Final",
+    "categoryIcon": "fad fa-gears"
+  }
+]
