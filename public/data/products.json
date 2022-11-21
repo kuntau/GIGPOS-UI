@@ -22,7 +22,8 @@
     "name": "Mee Goreng Mamak",
     "price": 5,
     "categoryId": 1,
-    "promotion": true
+    "promotion": true,
+    "favorite": true
   },
   {
     "id": 5,
@@ -40,7 +41,8 @@
     "id": 21,
     "name": "Lamb Chop",
     "price": 15,
-    "categoryId": 2
+    "categoryId": 2,
+    "favorite": true
   },
   {
     "id": 10,
@@ -52,13 +54,15 @@
     "id": 11,
     "name": "Nescafe ais",
     "price": 5,
-    "categoryId": 3
+    "categoryId": 3,
+    "favorite": true
   },
   {
     "id": 35,
     "name": "Coffee",
     "price": 3.5,
-    "categoryId": 4
+    "categoryId": 4,
+    "favorite": true
   },
   {
     "id": 36,

@@ -7,17 +7,18 @@ import type { Category, Product } from '../../stores/products'
 
 const products = useProducts();
 
-const categories: Category = products.categories
+const categories: Category[] = products.categories
 
 const productsByCategory = computed(() => {
-  const index = products.tabActive > 0 ? products.tabActive : 0
-  return products.getProductsByCategoryId(index)
+  return products.getProductsByCategory
 })
 
 const findProduct = () => {
   /* const theProducts = products.getProductById(2) */
   /* const theProducts = products.getStaticProduct */
-  const theProducts = products.getProductsByCategoryId(1)
+  /* const theProducts = products.getProductsByCategoryId(1) */
+  /* const theProducts = products.getFavoriteProducts */
+  const theProducts = products.getProductsByCategory
   console.log(theProducts)
 }
 
@@ -50,7 +51,7 @@ defineProps<{
     <div class="card-footer shadow-lg rounded-b p-2 flex-shrink">
       <a class="inline-block mr-2 px-2 rounded bg-pink-500 text-white" @click="findProduct"><i class="fad fa-search"></i></a>
       <a class="inline-block mr-2" href="#">{{ page }}</a>
-      <a class="inline-block mr-2" href="#">{{ products.tabActive }}</a>
+      <a class="inline-block mr-2" href="#">{{ products.activeTab }}</a>
     </div>
   </div>
 </template>

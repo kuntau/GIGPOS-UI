@@ -30,25 +30,32 @@ const useProducts = defineStore('products', {
   state: () => ({
     categories,
     products,
-    tabActive: 1,
+    activeTab: 1,
   }),
   getters: {
-    getStaticProduct: (state) => { 
-      console.log(products)
-      return state.products.find((product) => product.id === 2)
-    },
-    getProductById(state) { 
+    getStaticProduct: (state) => state.products.find((product) => product.id === 2),
+    getProductById: (state) => { 
       return (productId: number) => state.products.find((product) => product.id === productId)
     },
     getProductsByCategoryId: (state) => { 
       return (categoryId: number) => state.products.filter((product) => {
         return product.categoryId ===  categoryId
       })
+    },
+    getFavoriteProducts: (state) => {
+      return state.products.filter((product) => product.favorite === true)
+    },
+    getProductsByCategory(): Product[] {
+      if (this.activeTab === 0) {
+        return this.getFavoriteProducts
+      } else {
+        return this.products.filter((product) => product.categoryId === this.activeTab)
+      }
     }
   },
   actions: {
     selectTab(index: number) {
-      this.tabActive = index
+      this.activeTab = index
     }
   }
 });
