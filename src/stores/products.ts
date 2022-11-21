@@ -1,6 +1,6 @@
 import { defineStore, acceptHMRUpdate } from 'pinia';
 
-export interface Product {
+interface Product {
   id: number
   name: string
   price: number
@@ -11,19 +11,11 @@ export interface Product {
   promotion?: boolean
 }
 
-export interface Category {
+interface Category {
   id: number
   name: string
   description: string
   faIcon: string
-  imageUrl?: string
-}
-
-export interface OldCategory {
-  id: number
-  name: string
-  icon: string
-  products: Product[]
 }
 
 const categories: Category[] = await fetch('http://localhost:3000/data/categories.json')
@@ -34,15 +26,10 @@ const products: Product[] = await fetch('http://localhost:3000/data/products.jso
   .then(res => res.json())
   .then(data => data)
 
-const oldProductList: OldCategory[] = await fetch('http://localhost:3000/data/old_products.json')
-  .then(res => res.json())
-  .then(data => data)
-
 const useProducts = defineStore('products', {
   state: () => ({
     categories,
     products,
-    oldProductList,
     tabActive: 1,
   }),
   getters: {
@@ -70,5 +57,5 @@ if (import.meta.hot) {
     import.meta.hot.accept(acceptHMRUpdate(useProducts, import.meta.hot));
 }
 
-// export type { Product, Category }
+export type { Product, Category }
 export { useProducts }

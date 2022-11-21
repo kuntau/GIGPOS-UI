@@ -3,25 +3,15 @@ import { computed } from 'vue'
 import TabScroller from '@/components/Cashier/TabScroller.vue'
 import MenuItem from '@/components/Cashier/MenuItem.vue'
 import { useProducts } from '../../stores/products'
-import type { Category, OldCategory } from '../../stores/products'
+import type { Category, Product } from '../../stores/products'
 
 const products = useProducts();
-const productList: OldCategory[] = products.oldProductList;
-const oldCategories = productList.map((el => [ el.categoryName, el.categoryIcon ]))
 
 const categories: Category = products.categories
 
-// const activeTab = 
-const menus = computed(() => {
-  const index = products.tabActive > 0 ? products.tabActive : 0
-  return productList[index].products
-})
-
 const productsByCategory = computed(() => {
   const index = products.tabActive > 0 ? products.tabActive : 0
-  const theProducts = products.getProductsByCategoryId(index)
-  /* console.log(theProducts) */
-  return theProducts
+  return products.getProductsByCategoryId(index)
 })
 
 const findProduct = () => {
@@ -53,7 +43,7 @@ defineProps<{
         <MenuItem
           v-for="(product, index) in productsByCategory"
           :key="index"
-          :menuItem=product
+          :product=product
         />
       </div>
     </div>

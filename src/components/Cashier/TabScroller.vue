@@ -61,7 +61,7 @@ defineProps<{
         :class="{ active: index === products.tabActive }" 
         v-for="(item, index) in tabItems" :key="index"
       >
-        <i :class="item.categoryIcon"></i> {{ item.categoryName }}
+        <i :class="item.faIcon"></i> {{ item.name }}
       </a>
     </div>
     <button class="rounded-r border-l" @click="tabGoRight"><i class="fad fa-chevron-right"></i></button>

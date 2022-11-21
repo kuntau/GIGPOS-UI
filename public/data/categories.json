@@ -1,42 +1,50 @@
 [
   {
-    "categoryId": 0,
-    "categoryName": "Favorite",
-    "categoryIcon": "fad fa-stars"
+    "id": 0,
+    "name": "Favorite",
+    "description": "A nice description!",
+    "faIcon": "fad fa-stars"
   },
   {
-    "categoryId": 1,
-    "categoryName": "Malay",
-    "categoryIcon": "fad fa-utensils"
+    "id": 1,
+    "name": "Malay",
+    "description": "A nice description!",
+    "faIcon": "fad fa-utensils"
   },
   {
-    "categoryId": 2,
-    "categoryName": "Western",
-    "categoryIcon": "fad fa-burger-soda"
+    "id": 2,
+    "name": "Western",
+    "description": "A nice description!",
+    "faIcon": "fad fa-burger-soda"
   },
   {
-    "categoryId": 3,
-    "categoryName": "Cold",
-    "categoryIcon": "fad fa-beer"
+    "id": 3,
+    "name": "Cold",
+    "description": "A nice description!",
+    "faIcon": "fad fa-beer"
   },
   {
-    "categoryId": 4,
-    "categoryName": "Hot",
-    "categoryIcon": "fad fa-coffee"
+    "id": 4,
+    "name": "Hot",
+    "description": "A nice description!",
+    "faIcon": "fad fa-coffee"
   },
   {
-    "categoryId": 5,
-    "categoryName": "Addons",
-    "categoryIcon": "fad fa-plus"
+    "id": 5,
+    "name": "Addons",
+    "description": "A nice description!",
+    "faIcon": "fad fa-plus"
   },
   {
-    "categoryId": 6,
-    "categoryName": "Search",
-    "categoryIcon": "fad fa-search"
+    "id": 6,
+    "name": "Search",
+    "description": "A nice description!",
+    "faIcon": "fad fa-search"
   },
   {
-    "categoryId": 7,
-    "categoryName": "Final",
-    "categoryIcon": "fad fa-gears"
+    "id": 7,
+    "name": "Final",
+    "description": "A nice description!",
+    "faIcon": "fad fa-gears"
   }
 ]
