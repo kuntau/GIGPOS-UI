@@ -56,8 +56,6 @@ export const useCart = defineStore('cart', {
     currentProductId: 1,
     discount: 20,
     taxRate: 6,
-    subTotal: 0,
-    total: 0,
   }),
   getters: {
     checkIfProductInCart: (state) => {
@@ -68,7 +66,7 @@ export const useCart = defineStore('cart', {
       return state.cart.reduce((previousItem, currentItem) => previousItem + (currentItem.price*currentItem.quantity), subTotal)
     },
     getTotal(): number {
-      const subTotal: number = this.getSubTotal
+      const subTotal = this.getSubTotal
       return (subTotal + (subTotal * 6 / 100))
     }
   },
