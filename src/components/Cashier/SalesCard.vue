@@ -26,32 +26,36 @@ const OneItem: Product = {
 }
 
 // methods
-function formatPrice(price: string) {
-  return Number.parseFloat(price).toFixed(2);
+function formatPrice(price: number) {
+  return price.toFixed(2).toLocaleString();
 }
-function formatPriceString(price: string) {
+
+function formatPriceString(price: number) {
   return 'RM' + formatPrice(price);
 }
-function totalPrice(items: Product) {
+
+function totalPrice(items: CurrentSale) {
   let subtotal = items.price * items.quantity;
   if ('addon' in items && items.addon!.length > 0) {
     items.addon!.forEach((el: Product) => (subtotal += el.price));
   }
-  return formatPrice(subtotal.toString());
+  return formatPrice(subtotal);
 }
 
-// computed
-const currentSaleSubTotal = computed(() => {
-  let subtotal = 0; // weird this have to initialized else we got NaN
-  currentSale.forEach((el) => {
-    subtotal += el.price * el.quantity; // calculate price for main item
-    if ('addon' in el) el.addon!.forEach((el) => (subtotal += el.price)); // calculate price for main's addon
-  });
-  return subtotal;
-});
+const clearCart = () => {
+  console.log("Resetting cart...", cart.getSubTotal)
+    /* cart.$reset() */
+    /* currentSale = {} */
+    /* cart.clearCart() */
+  }
 
-const currentSaleTotal = computed(() =>
-  formatPrice(currentSaleSubTotal.value.toString() + (currentSaleSubTotal.value * 6) / 100)
+// computed
+const getSubTotalString = computed(() =>
+  formatPriceString(cart.getSubTotal)
+);
+
+const getTotalString = computed(() =>
+  formatPriceString(cart.getTotal)
 );
 </script>
 
@@ -89,11 +93,11 @@ const currentSaleTotal = computed(() =>
                 :key="addonIndex"
                 class="text-gray-500 text-sm card-list-item-detail"
               >
-                {{ addon.productName }} &mdash; {{ formatPriceString(addon.price.toString()) }}
+                {{ addon.name }} &mdash; {{ formatPriceString(addon.price) }}
               </div>
             </td>
             <td class="text-sm text-center align-top">{{ sale.quantity }}</td>
-            <td class="pr-2 text-right align-top">{{ formatPriceString(totalPrice(sale))  }}</td>
+            <td class="pr-2 text-right align-top">{{ totalPrice(sale)  }}</td>
           </tr>
         </tbody>
       </table>
@@ -101,7 +105,7 @@ const currentSaleTotal = computed(() =>
       <!-- Start subtotal section -->
       <div class="card-footer bg-white p-5 border-t">
         <p class="text-right text-gray-700 font-normal tracking-wide">
-          Sub total : {{ formatPriceString(currentSaleSubTotal.toString()) }}
+          Sub total : {{ getSubTotalString }}
         </p>
         <p class="text-right text-gray-700 font-normal tracking-wide">
           Tax : {{ taxRate }}%
@@ -112,16 +116,15 @@ const currentSaleTotal = computed(() =>
       </div>
       <!-- Start total section -->
       <div class="card-footer bg-gray-200 rounded-b p-3 border-t flex">
-        <button class="px-3 ml-2 text-sm rounded text-white bg-red-500"><i class="far fa-times"></i></button>
-        <button class="px-3 pr-2 ml-2 text-sm rounded text-white bg-blue-500"><i class="far fa-edit"></i></button>
+        <button @click="clearCart" class="px-3 ml-2 text-sm rounded text-white bg-red-500"><i class="far fa-times"></i></button>
+        <button @click="cart.$reset()" class="px-3 ml-2 text-sm rounded text-white bg-purple-500"><i class="far fa-times"></i></button>
+        <button @click="cart.addCartItem(OneItem as CartItem)" class="px-3 pr-2 ml-2 text-sm rounded text-white bg-blue-500"><i class="far fa-edit"></i></button>
         <p
           class="text-xl text-right text-gray-700 font-medium tracking-wide flex-1"
         >
-          Total: {{ formatPriceString(currentSaleTotal) }}
+          Total: {{ getTotalString }}
         </p>
-        <a class="text-xl px-2 ml-3" href="#"
-          ><i class="text-2xl text-green-500 hover:shadow-lg fad fa-cash-register"></i
-        ></a>
+        <a class="text-xl px-2 ml-3" href="#"><i class="text-2xl text-green-500 hover:shadow-lg fad fa-cash-register"></i></a>
       </div>
     </div>
   </div>

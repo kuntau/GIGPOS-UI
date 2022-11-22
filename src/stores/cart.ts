@@ -64,6 +64,14 @@ export const useCart = defineStore('cart', {
     checkIfProductInCart: (state) => {
       return state.cart.findIndex((item) => item.id === state.currentProductId)
     },
+    getSubTotal: (state) : number => { 
+      let subTotal = 0
+      return state.cart.reduce((previousItem, currentItem) => previousItem + (currentItem.price*currentItem.quantity), subTotal)
+    },
+    getTotal(): number {
+      const subTotal: number = this.getSubTotal
+      return (subTotal + (subTotal * 6 / 100))
+    }
   },
   actions: {
     setCurrentProductId(id: number) {
