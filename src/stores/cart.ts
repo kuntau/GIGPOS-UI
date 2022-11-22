@@ -8,7 +8,7 @@ interface CartItem extends Product {
 
 // type Cart = Product[]
 
-const Oldcart: CartItem[] = [
+const sampleCart: CartItem[] = [
   {
     id: 1,
     name: 'Nasi Lemak',
@@ -46,16 +46,15 @@ const Oldcart: CartItem[] = [
   },
 ];
 
-const cart: CartItem[] = []
-
 export type { CartItem }
 
 export const useCart = defineStore('cart', {
   state: () => ({
     customerId: 1,
     timestamp: 1649536314315,
-    cart: [] as CartItem[],
+    cart: sampleCart,
     currentProductId: 1,
+    discount: 20,
     taxRate: 6,
     subTotal: 0,
     total: 0,
@@ -79,8 +78,8 @@ export const useCart = defineStore('cart', {
     },
     clearCart() {
       console.log("yayay")
-      this.$reset()
-      /* this.cart = [] */
+      /* this.$reset() */
+      this.cart = []
       /* this.cart = cart */
       /* this.cart.slice(0, this.cart.length) */
     },

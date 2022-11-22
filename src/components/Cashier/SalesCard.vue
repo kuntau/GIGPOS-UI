@@ -7,16 +7,13 @@ import type { CartItem } from '../../stores/cart'
 
 const cart = useCart();
 const customerSelectionPopup = ref(false);
-const taxRate = 6;
-const discount = 20;
 
 interface CurrentSale extends Product {
   quantity: number,
-  /* subTotal?: number, */
   addon?: Product[]
 }
   
-const currentSale: CartItem[] = cart.cart
+/* let currentSale: CartItem[] = cart.cart */
 
 const OneItem: Product = {
   id: 150,
@@ -34,7 +31,7 @@ function formatPriceString(price: number) {
   return 'RM' + formatPrice(price);
 }
 
-function totalPrice(items: CurrentSale) {
+function calcProductPrice(items: CurrentSale) {
   let subtotal = items.price * items.quantity;
   if ('addon' in items && items.addon!.length > 0) {
     items.addon!.forEach((el: Product) => (subtotal += el.price));
@@ -44,10 +41,13 @@ function totalPrice(items: CurrentSale) {
 
 const clearCart = () => {
   console.log("Resetting cart...", cart.getSubTotal)
-    /* cart.$reset() */
-    /* currentSale = {} */
-    /* cart.clearCart() */
-  }
+  /* cart.$patch({ cart: [] }) */
+  cart.cart = []
+  /* currentSale = [] */
+  /* cart.$reset() */
+  /* cart.clearCart() */
+  console.log("Resetting cart...", cart.getSubTotal)
+}
 
 // computed
 const getSubTotalString = computed(() =>
@@ -60,13 +60,9 @@ const getTotalString = computed(() =>
 </script>
 
 <template>
-  <div
-    class="card flex flex-col bg-card-bg bg-white shadow-lg rounded relative"
-  >
+  <div class="card flex flex-col bg-card-bg bg-white shadow-lg rounded relative" >
     <div class="card-header bg-white rounded-t border-b flex">
-      <h3 class="text-lg text-gray-700 font-semibold tracking-wide py-4 mx-4">
-        Cart
-      </h3>
+      <h3 class="text-lg text-gray-700 font-semibold tracking-wide py-4 mx-4">Cart</h3>
       <div
         class="flex-grow text-right text-lg text-gray-700 border-l p-4 cursor-pointer"
         @click="customerSelectionPopup = !customerSelectionPopup"
@@ -82,11 +78,14 @@ const getTotalString = computed(() =>
 
       <table class="card-list table w-full" >
         <tbody clsss="text-green-900" >
+          <tr v-show="cart.cart.length === 0">
+            <td class="pl-3">Please add item to cart.</td>
+          </tr>
           <tr
-            v-for="(sale, index) in currentSale"
+            v-for="(sale, index) in cart.cart"
             :key="index"
           >
-            <td class="pl-2">
+            <td class="pl-3">
               {{ sale.name }}
               <div
                 v-for="(addon, addonIndex) in sale.addon"
@@ -97,34 +96,34 @@ const getTotalString = computed(() =>
               </div>
             </td>
             <td class="text-sm text-center align-top">{{ sale.quantity }}</td>
-            <td class="pr-2 text-right align-top">{{ totalPrice(sale)  }}</td>
+            <td class="pr-2 text-right align-top">{{ calcProductPrice(sale)  }}</td>
           </tr>
         </tbody>
       </table>
 
       <!-- Start subtotal section -->
-      <div class="card-footer bg-white p-5 border-t">
+      <div class="card-footer bg-white mt-3 p-5 border-t">
         <p class="text-right text-gray-700 font-normal tracking-wide">
           Sub total : {{ getSubTotalString }}
         </p>
         <p class="text-right text-gray-700 font-normal tracking-wide">
-          Tax : {{ taxRate }}%
+          Tax : {{ cart.taxRate }}%
         </p>
         <p class="text-right text-gray-700 font-normal tracking-wide">
-          Discount : {{ discount }}%
+          Discount : {{ cart.discount }}%
         </p>
       </div>
       <!-- Start total section -->
       <div class="card-footer bg-gray-200 rounded-b p-3 border-t flex">
-        <button @click="clearCart" class="px-3 ml-2 text-sm rounded text-white bg-red-500"><i class="far fa-times"></i></button>
-        <button @click="cart.$reset()" class="px-3 ml-2 text-sm rounded text-white bg-purple-500"><i class="far fa-times"></i></button>
-        <button @click="cart.addCartItem(OneItem as CartItem)" class="px-3 pr-2 ml-2 text-sm rounded text-white bg-blue-500"><i class="far fa-edit"></i></button>
+        <button @click="clearCart" class="px-3 ml-2 text-sm rounded text-white bg-red-500"><i class="fad fa-times"></i></button>
+        <button @click="cart.$reset()" class="px-3 ml-2 text-sm rounded text-white bg-purple-500"><i class="fad fa-allergies"></i></button>
+        <button @click="cart.addCartItem(OneItem as CartItem)" class="px-3 pr-2 ml-2 text-sm rounded text-white bg-blue-500"><i class="fad fa-edit"></i></button>
         <p
           class="text-xl text-right text-gray-700 font-medium tracking-wide flex-1"
         >
           Total: {{ getTotalString }}
         </p>
-        <a class="text-xl px-2 ml-3" href="#"><i class="text-2xl text-green-500 hover:shadow-lg fad fa-cash-register"></i></a>
+        <a class="text-xl px-2 ml-3" @click="clearCart"><i class="text-2xl text-green-500 hover:shadow-lg fad fa-cash-register"></i></a>
       </div>
     </div>
   </div>
