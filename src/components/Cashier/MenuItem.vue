@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { faker } from '@faker-js/faker';
 import type { Product } from '../../stores/products'
+import type { CartItem } from '../../stores/cart'
+import { useCart } from '../../stores/cart'
 
 // const imageURL = 'https://loremflickr.com/160/80/food';
 const imageURL = faker.image.food(160, 100, true)
@@ -9,7 +11,11 @@ const style = {
   backgroundSize: 'cover'
 }
 
-const addToCart = (item: Product) => console.log(`${item.name} added to cart`)
+const cart = useCart()
+const addToCart = (item: Product) => {
+  /* item["quantity"] = 1 */
+  cart.addCartItem(item as CartItem)
+}
 
 defineProps<{
  product: Product
@@ -19,7 +25,7 @@ defineProps<{
 <template>
   <a 
     class="cursor-pointer"
-    @click="addToCart(product)"
+    @click="cart.addCartItem(product as CartItem)"
   >
     <div class="flex flex-col-reverse w-full h-25 shadow" :style=style>
       <span class="block text-sm font-medium bg-gray-800/60 text-gray-100 overflow-hidden">

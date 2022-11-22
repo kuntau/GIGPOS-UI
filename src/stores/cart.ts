@@ -1,96 +1,102 @@
 import { defineStore, acceptHMRUpdate } from 'pinia';
+import type { Product } from './products'
 
-type Addon = Product[]
-
-interface Product {
-  productId: number,
-  productName: string,
-  price: number,
-  quantity: number,
-  addon?: Addon
+interface CartItem extends Product {
+  quantity: number
+  addon?: Product[]
 }
-  
-// interface Cart {
-//   products: Product[]
-// }
 
-type Cart = Product[]
+// type Cart = Product[]
 
-const cart: Cart = [
+const Oldcart: CartItem[] = [
   {
-    productId: 5,
-    productName: 'Nasi Lemak',
-    price: 5.0,
+    id: 1,
+    name: 'Nasi Lemak',
+    price: 3.5,
+    categoryId: 1,
     quantity: 1,
-    addon: [
-      {
-        productId: 10,
-        productName: 'Ayam goreng',
-        price: 3.5,
-        quantity: 1,
-      },
-      {
-        productId: 9,
-        productName: 'Sambal kerang',
-        price: 2.5,
-        quantity: 1,
-      },
-      {
-        productId: 132,
-        productName: 'Sambal Sotong',
-        price: 2.5,
-        quantity: 1,
-      },
-    ],
   },
   {
-    productId: 6,
-    productName: 'Mee Goreng Mamak',
+    id: 4,
+    name: 'Mee Goreng Mamak',
     price: 5.0,
+    categoryId: 1,
     quantity: 1,
-    addon: [
-      {
-        productId: 11,
-        productName: 'Telur mata',
-        price: 1.5,
-        quantity: 1,
-      },
-    ],
   },
   {
-    productId: 4,
-    productName: 'Roti Bakar',
-    price: 2.0,
+    id: 20,
+    name: 'Chicken Chop',
+    price: 13.5,
+    categoryId: 2,
     quantity: 2,
   },
   {
-    productId: 3,
-    productName: 'Chocolate Shake',
-    price: 7.9,
+    id: 11,
+    name: 'Nescafe ais',
+    price: 3.5,
+    categoryId: 3,
     quantity: 1,
-    addon: [
-      {
-        productId: 14,
-        productName: 'Extra whip',
-        price: 1.0,
-        quantity: 1,
-      },
-    ],
   },
   {
-    productId: 2,
-    productName: 'Hot Latte',
-    price: 4.9,
+    id: 36,
+    name: 'Latte',
+    price: 5,
+    categoryId: 4,
     quantity: 2,
   },
 ];
+
+const cart: CartItem[] = []
+
+export type { CartItem }
 
 export const useCart = defineStore('cart', {
   state: () => ({
     customerId: 1,
     timestamp: 1649536314315,
-    cart,
+    cart: [] as CartItem[],
+    currentProductId: 1,
+    taxRate: 6,
+    subTotal: 0,
+    total: 0,
   }),
+  getters: {
+    checkIfProductInCart: (state) => {
+      return state.cart.findIndex((item) => item.id === state.currentProductId)
+    },
+  },
+  actions: {
+    setCurrentProductId(id: number) {
+      this.currentProductId = id
+    },
+    clearCart() {
+      console.log("yayay")
+      this.$reset()
+      /* this.cart = [] */
+      /* this.cart = cart */
+      /* this.cart.slice(0, this.cart.length) */
+    },
+    increaseProductQuantity(id: number) {
+      const itemToModify = this.cart.find(item => item.id === id)
+      if (itemToModify) itemToModify.quantity ++
+    },
+    decreaseProductQuantity(id: number) {
+      const itemToModify = this.cart.find(item => item.id === id)
+      if (itemToModify) itemToModify.quantity --
+    },
+    addCartItem(item: CartItem) {
+      this.setCurrentProductId(item.id)
+      const productIndex = this.checkIfProductInCart
+      /* console.log(this.currentProductId, item.id, productIndex) */
+      if (this.checkIfProductInCart >= 0) {
+        console.log("Product exist at ", productIndex)
+        this.increaseProductQuantity(item.id)
+      } else {
+        item["quantity"] = 1
+        this.cart.push(item)
+      }
+    }
+  }
 });
 
 if (import.meta.hot) {

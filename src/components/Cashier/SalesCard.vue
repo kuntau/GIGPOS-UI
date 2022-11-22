@@ -2,25 +2,28 @@
 import { ref, computed } from 'vue';
 import CustomerSelection from '@/components/Cashier/CustomerSelection.vue'
 import { useCart } from '../../stores/cart'
+import type { Product } from '../../stores/products'
+import type { CartItem } from '../../stores/cart'
 
 const cart = useCart();
 const customerSelectionPopup = ref(false);
 const taxRate = 6;
 const discount = 20;
 
-type Addon = Product[]
-
-interface Product {
-  productName: string,
-  price: number,
+interface CurrentSale extends Product {
   quantity: number,
-  subTotal?: number,
-  addon?: Addon
+  /* subTotal?: number, */
+  addon?: Product[]
 }
   
-type CurrentSale = Product[]
+const currentSale: CartItem[] = cart.cart
 
-const currentSale = cart.cart
+const OneItem: Product = {
+  id: 150,
+  name: 'Kari Kambing',
+  price: 10.0,
+  categoryId: 3,
+}
 
 // methods
 function formatPrice(price: string) {
@@ -80,7 +83,7 @@ const currentSaleTotal = computed(() =>
             :key="index"
           >
             <td class="pl-2">
-              {{ sale.productName }}
+              {{ sale.name }}
               <div
                 v-for="(addon, addonIndex) in sale.addon"
                 :key="addonIndex"
