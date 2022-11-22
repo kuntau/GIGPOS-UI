@@ -35,7 +35,7 @@ defineProps<{
     </div>
     <div class="card-header rounded shadow-sm flex min-w-0 w-full">
       <TabScroller
-        :tabItems=categories
+        :categories=categories
       />
     </div>
     <!-- class="card-header rounded shadow-md relative flex" -->

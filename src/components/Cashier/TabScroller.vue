@@ -1,12 +1,11 @@
 <script setup lang='ts'>
 import { ref } from 'vue'
 import { useProducts } from '../../stores/products';
+import type { Category } from '../../stores/products';
 
 interface ScrollTo {
   (element: HTMLDivElement, step: number, duration: number): void
 }
-
-type TabItem = string
 
 const products = useProducts();
 const wrapper = ref()
@@ -46,7 +45,7 @@ const scrollTo: ScrollTo = (element, step, duration) => {
 }
 
 defineProps<{
-  tabItems: TabItem[]
+  categories: Category[]
 }>()
 </script>
 <template>
@@ -58,10 +57,10 @@ defineProps<{
       <a
         class="tab px-4 py-4 font-normal hover:bg-slate-100 border-r cursor-pointer" 
         @click="products.selectTab(index)" 
-        :class="{ active: index === products.tabActive }" 
-        v-for="(item, index) in tabItems" :key="index"
+        :class="{ active: index === products.activeTab }" 
+        v-for="(category, index) in categories" :key="index"
       >
-        <i :class="item.faIcon"></i> {{ item.name }}
+        <i :class="category.faIcon"></i> {{ category.name }}
       </a>
     </div>
     <button class="rounded-r border-l" @click="tabGoRight"><i class="fad fa-chevron-right"></i></button>
