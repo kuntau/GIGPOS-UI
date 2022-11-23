@@ -56,6 +56,7 @@ export const useCart = defineStore('cart', {
     currentProductId: 1,
     discount: 20,
     taxRate: 6,
+    editCartMode: false
   }),
   getters: {
     checkIfProductInCart: (state) => {
@@ -75,19 +76,21 @@ export const useCart = defineStore('cart', {
       this.currentProductId = id
     },
     clearCart() {
-      console.log("yayay")
-      /* this.$reset() */
       this.cart = []
-      /* this.cart = cart */
-      /* this.cart.slice(0, this.cart.length) */
     },
-    increaseProductQuantity(id: number) {
+    incProductQuantity(id: number) {
       const itemToModify = this.cart.find(item => item.id === id)
       if (itemToModify) itemToModify.quantity ++
     },
-    decreaseProductQuantity(id: number) {
+    decProductQuantity(id: number) {
       const itemToModify = this.cart.find(item => item.id === id)
-      if (itemToModify) itemToModify.quantity --
+      if (itemToModify && itemToModify.quantity > 1) itemToModify.quantity --
+    },
+    removeCartItem(id: number) {
+      this.setCurrentProductId(id)
+      const productIndex = this.checkIfProductInCart
+      console.log("Product exist at ", productIndex)
+      this.cart.splice(productIndex, 1)
     },
     addCartItem(item: CartItem) {
       this.setCurrentProductId(item.id)
@@ -95,7 +98,7 @@ export const useCart = defineStore('cart', {
       /* console.log(this.currentProductId, item.id, productIndex) */
       if (this.checkIfProductInCart >= 0) {
         console.log("Product exist at ", productIndex)
-        this.increaseProductQuantity(item.id)
+        this.incProductQuantity(item.id)
       } else {
         item["quantity"] = 1
         this.cart.push(item)

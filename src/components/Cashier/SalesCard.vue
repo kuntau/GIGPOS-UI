@@ -15,8 +15,9 @@ interface CurrentSale extends Product {
 }
   
 /* const currentSale: CartItem[] = storeToRefs(cart.cart) */
-const { cart } = storeToRefs(cartStore)
+const { cart, editCartMode } = storeToRefs(cartStore)
 /* const cart = computed(() => cartStore.cart) */
+const debug = true
 
 const OneItem: Product = {
   id: 150,
@@ -80,30 +81,37 @@ const getTotalString = computed(() =>
 
     <div class="list-card-content flex-grow pt-3">
 
-      <table class="card-list table w-full" >
-        <tbody clsss="text-green-900" >
-          <tr v-show="cart.length === 0">
-            <td class="pl-3">Please add item to cart.</td>
-          </tr>
-          <tr
-            v-for="(sale, index) in cart"
-            :key="index"
-          >
-            <td class="pl-3">
-              {{ sale.name }}
-              <div
-                v-for="(addon, addonIndex) in sale.addon"
-                :key="addonIndex"
-                class="text-gray-500 text-sm card-list-item-detail"
-              >
-                {{ addon.name }} &mdash; {{ formatPriceString(addon.price) }}
-              </div>
-            </td>
-            <td class="text-sm text-center align-top">{{ sale.quantity }}</td>
-            <td class="pr-2 text-right align-top">{{ calcPerProductSum(sale)  }}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="flex-grow pl-3">
+        <table class="card-list table w-full" >
+          <tbody clsss="text-green-900" >
+            <tr v-show="cart.length === 0">
+              <td>Please add item to cart.</td>
+            </tr>
+            <tr
+              v-for="(sale, index) in cart"
+              :key="index"
+            >
+              <td v-show="editCartMode === true"><button @click="cartStore.removeCartItem(sale.id)"><i class="fa fa-times bg-red-400 text-white rounded p-1"></i></button></td>
+              <td>
+                {{ sale.name }}
+                <div
+                  v-for="(addon, addonIndex) in sale.addon"
+                  :key="addonIndex"
+                  class="text-gray-500 text-sm card-list-item-detail"
+                >
+                  {{ addon.name }} &mdash; {{ formatPriceString(addon.price) }}
+                </div>
+              </td>
+              <td class="text-sm text-center align-top">
+                <button v-show="editCartMode" @click="cartStore.decProductQuantity(sale.id)"><i class="fa fa-minus bg-amber-400 text-white rounded p-1"></i></button>
+                {{ sale.quantity }}
+                <button v-show="editCartMode" @click="cartStore.incProductQuantity(sale.id)"><i class="fa fa-plus bg-green-400 text-white rounded p-1"></i></button>
+              </td>
+              <td class="pr-2 text-right align-top">{{ calcPerProductSum(sale)  }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <!-- Start subtotal section -->
       <div class="card-footer bg-white mt-3 p-5 border-t">
@@ -119,15 +127,19 @@ const getTotalString = computed(() =>
       </div>
       <!-- Start total section -->
       <div class="card-footer bg-gray-200 rounded-b p-3 border-t flex">
-        <button @click="clearCart" class="px-3 ml-2 text-sm rounded text-white bg-red-500"><i class="fad fa-times"></i></button>
-        <button @click="cartStore.$reset()" class="px-3 ml-2 text-sm rounded text-white bg-zinc-500"><i class="fad fa-allergies"></i></button>
-        <button @click="cartStore.addCartItem(OneItem as CartItem)" class="px-3 pr-2 ml-2 text-sm rounded text-white bg-blue-500"><i class="fad fa-edit"></i></button>
         <p
-          class="text-xl text-right text-gray-700 font-medium tracking-wide flex-1"
+          class="text-xl text-right text-gray-700 font-bold tracking-wide flex-1"
         >
           Total: {{ getTotalString }}
         </p>
         <a class="text-xl px-2 ml-3" @click="clearCart"><i class="text-2xl text-green-500 hover:shadow-lg fad fa-cash-register"></i></a>
+      </div>
+      <!-- Start debug section -->
+      <div v-show="debug" class="card-footer rounded-b p-3 border-t flex h-14 bg-fuchsia-100">
+        <button @click="clearCart" class="px-3 ml-2 text-sm rounded text-white bg-red-500"><i class="fad fa-times"></i></button>
+        <button @click="cartStore.$reset()" class="px-3 ml-2 text-sm rounded text-white bg-cyan-500"><i class="fad fa-allergies"></i></button>
+        <button @click="editCartMode = !editCartMode" class="px-3 pr-2 ml-2 text-sm rounded text-white bg-blue-500"><i class="fad fa-edit"></i></button>
+        <button @click="cartStore.addCartItem(OneItem as CartItem)" class="px-3 pr-2 ml-2 text-sm rounded text-white bg-green-500"><i class="fad fa-cart-plus"></i></button>
       </div>
     </div>
   </div>
