@@ -6,7 +6,7 @@ const CashierStyle = {
   display: 'grid',
   gridTemplateColumns: 'minmax(55%, 1fr) 400px',
   gridTemplateRows: '1fr',
-  gap: '0px 10px',
+  gap: '0px 15px',
   gridTemplateAreas: '"MenuCard SalesCard"'
 }
 
@@ -17,7 +17,7 @@ const MenuCardStyle = {
 }
 
 const SalesCardStyle = {
-  marginLeft: '10px',
+  /* marginLeft: '10px', */
   /* flex: '0 0 330px', */
 }
 
