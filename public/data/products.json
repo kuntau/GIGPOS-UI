@@ -1,0 +1,115 @@
+[
+  {
+    "id": 1,
+    "name": "Nasi Lemak",
+    "price": 3.5,
+    "categoryId": 1
+  },
+  {
+    "id": 2,
+    "name": "Nasi Goreng Kampung",
+    "price": 5,
+    "categoryId": 1
+  },
+  {
+    "id": 3,
+    "name": "Nasi Goreng Cina",
+    "price": 5,
+    "categoryId": 1
+  },
+  {
+    "id": 4,
+    "name": "Mee Goreng Mamak",
+    "price": 5,
+    "categoryId": 1,
+    "promotion": true,
+    "favorite": true
+  },
+  {
+    "id": 5,
+    "name": "Tomyam",
+    "price": 5,
+    "categoryId": 1
+  },
+  {
+    "id": 20,
+    "name": "Chicken Chop",
+    "price": 13.5,
+    "categoryId": 2
+  },
+  {
+    "id": 21,
+    "name": "Lamb Chop",
+    "price": 15,
+    "categoryId": 2,
+    "favorite": true
+  },
+  {
+    "id": 10,
+    "name": "Milo ais",
+    "price": 3.5,
+    "categoryId": 3
+  },
+  {
+    "id": 11,
+    "name": "Nescafe ais",
+    "price": 5,
+    "categoryId": 3,
+    "favorite": true
+  },
+  {
+    "id": 35,
+    "name": "Coffee",
+    "price": 3.5,
+    "categoryId": 4,
+    "favorite": true
+  },
+  {
+    "id": 36,
+    "name": "Latte",
+    "price": 5,
+    "categoryId": 4
+  },
+  {
+    "id": 101,
+    "name": "Nasi Putih",
+    "price": 3.5,
+    "categoryId": 1
+  },
+  {
+    "id": 102,
+    "name": "Nasi Goreng Biasa",
+    "price": 5,
+    "categoryId": 1
+  },
+  {
+    "id": 103,
+    "name": "Nasi Goreng Daging",
+    "price": 5,
+    "categoryId": 1
+  },
+  {
+    "id": 104,
+    "name": "Nasi Goreng Kerabu",
+    "price": 5,
+    "categoryId": 1
+  },
+  {
+    "id": 105,
+    "name": "Nasi Goreng Ikan Masin",
+    "price": 5,
+    "categoryId": 1
+  },
+  {
+    "id": 108,
+    "name": "Nasi Goreng Ayam",
+    "price": 3.5,
+    "categoryId": 1
+  },
+  {
+    "id": 109,
+    "name": "Nasi Goreng U.S.A",
+    "price": 5,
+    "categoryId": 1
+  }
+]

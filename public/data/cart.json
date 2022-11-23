@@ -1,0 +1,67 @@
+[
+  {
+    "item": 1,
+    "productId": 5,
+    "productName": "Nasi Lemak",
+    "price": 5,
+    "quantity": 1,
+    "addon": [
+      {
+        "productId": 10,
+        "productName": "Ayam goreng",
+        "price": 3.5,
+        "quantity": 1
+      },
+      {
+        "productId": 9,
+        "productName": "Sambal kerang",
+        "price": 2.5,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "item": 2,
+    "productId": 6,
+    "productName": "Mee Goreng Mamak",
+    "price": 5,
+    "quantity": 1,
+    "addon": [
+      {
+        "productId": 11,
+        "productName": "Telur mata",
+        "price": 1.5,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "item": 3,
+    "productId": 4,
+    "productName": "Roti Bakar",
+    "price": 2,
+    "quantity": 2
+  },
+  {
+    "item": 4,
+    "productId": 3,
+    "productName": "Chocolate Shake",
+    "price": 7.9,
+    "quantity": 1,
+    "addon": [
+      {
+        "productId": 14,
+        "productName": "Extra whip",
+        "price": 1,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "item": 5,
+    "productId": 2,
+    "productName": "Hot Latte",
+    "price": 4.9,
+    "quantity": 2
+  }
+]
