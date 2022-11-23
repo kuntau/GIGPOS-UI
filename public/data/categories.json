@@ -1,0 +1,50 @@
+[
+  {
+    "id": 0,
+    "name": "Favorite",
+    "description": "A nice description!",
+    "faIcon": "fad fa-stars"
+  },
+  {
+    "id": 1,
+    "name": "Malay",
+    "description": "A nice description!",
+    "faIcon": "fad fa-utensils"
+  },
+  {
+    "id": 2,
+    "name": "Western",
+    "description": "A nice description!",
+    "faIcon": "fad fa-burger-soda"
+  },
+  {
+    "id": 3,
+    "name": "Cold",
+    "description": "A nice description!",
+    "faIcon": "fad fa-beer"
+  },
+  {
+    "id": 4,
+    "name": "Hot",
+    "description": "A nice description!",
+    "faIcon": "fad fa-coffee"
+  },
+  {
+    "id": 5,
+    "name": "Addons",
+    "description": "A nice description!",
+    "faIcon": "fad fa-plus"
+  },
+  {
+    "id": 6,
+    "name": "Search",
+    "description": "A nice description!",
+    "faIcon": "fad fa-search"
+  },
+  {
+    "id": 7,
+    "name": "Final",
+    "description": "A nice description!",
+    "faIcon": "fad fa-gears"
+  }
+]
