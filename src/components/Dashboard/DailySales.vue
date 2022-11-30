@@ -1,16 +1,18 @@
 <script setup lang="ts">
-import { PropType, ref, computed, onMounted } from 'vue'
+import { PropType, ref, computed, onMounted, onBeforeMount } from 'vue'
 import { useReports } from '../../stores/reports'
+import BarChart from './BarChart'
+import LineChart from './LineChart'
 import { Bar } from 'vue-chartjs'
-import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, Plugin, DefaultDataPoint } from 'chart.js'
+import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, Plugin, DefaultDataPoint, ChartData, ChartOptions } from 'chart.js'
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
-const reportStore = useReports
+const reportStore = useReports()
 
 function fillData() {
   const newData = {
     labels: [ 'January', 'February', 'March', 'April', 'Mei' ],
-    dataset: [
+    datasets: [
       {      
         label: 'Data One',
         backgroundColor: '#f87979',
@@ -19,12 +21,8 @@ function fillData() {
     ]
   }
 
-  console.log("Refreshing ", chartData)
-  console.log("Value ", chartData.value)
-  /* chartData.value = { ...newData } */
-  /* chartData = newData */
-  console.log("Refreshing ", chartData)
-  console.log("Value ", chartData.value)
+  chartDataX.value = { ...newData }
+  console.log("EndValue ", chartDataX.value)
 }
 
 const sampleDataY = {
@@ -37,8 +35,14 @@ const sampleDataY = {
 }
 
 const chartOptions = {
-  responsive: true
+  responsive: false,
+  maintainAspectRatio: false
 }
+
+/* const webData = computed(() => reportStore.dailyData) */
+const dailyData = reportStore.dailyData
+const weeklyData = reportStore.weeklyData
+const lineData = reportStore.lineData
 
 const props = defineProps({
   chartId: {
@@ -79,30 +83,35 @@ const props = defineProps({
   }
 })
 
-console.log(props.chartData)
 
-const chartDataX = computed(() => {
-  return props.chartData
+const chartDataX = ref<ChartData<'bar'>>(props.chartData)
+const lineDataX = ref<ChartData<'line'>>(lineData)
+
+/* const chartData = ref<ChartData<'bar'>>({ */
+/*   datasets: [] */
+/* }) */
+
+onBeforeMount(() => {
+  /* setInterval(() => { */
+    /* fillData() */
+  /* }, 5000); */
 })
 
-const chartDataY = computed(() => {
-  return reportStore.dailyData
-})
+const loadDaily = () => {
+  chartDataX.value = { ...dailyData }
+}
 
-let chartData = ref<ChartData<'bar'>>(props.chartData)
-
-onMounted(() => {
-  setInterval(() => {
-    fillData()
-  }, 5000);
-})
+const loadWeekly = () => {
+  chartDataX.value = { ...weeklyData }
+}
 </script>
 
 <template>
-  <h2>{{ chartData }} + {{ props.chartData }}</h2>
+  <button @click="loadWeekly" class="px-2 py-1 bg-cyan-600 text-white rounded">Weekly</button>
+  <button @click="loadDaily" class="ml-2 px-2 py-1 bg-cyan-600 text-white rounded">Daily</button>
   <Bar
-    :chart-options="chartOptions"
-    :chart-data="chartData"
+    :chart-options="props.chartOptions"
+    :chart-data="chartDataX"
     :chart-id="props.chartId"
     :dataset-id-key="datasetIdKey"
     :plugins="plugins"
@@ -111,5 +120,7 @@ onMounted(() => {
     :width="width"
     :height="height"
   />
+  <!-- <BarChart :chart-data="chartData" :chart-options="chartOptions" /> -->
+  <LineChart :chart-data="chartDataX" :chart-options="chartOptions" />
 </template>
 
