@@ -62,15 +62,11 @@ export default defineComponent({
     } 
   },
   setup(props) {
-    const chartOptions = {
-      responsive: false,
-      maintainAspectRatio: false
-    }
 
     return () =>
       h(Line, {
         chartData: props.chartData,
-        chartOptions,
+        chartOptions: props.chartOptions,
         chartId: props.chartId,
         width: props.width,
         height: props.height,
