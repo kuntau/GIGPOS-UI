@@ -25,18 +25,61 @@ function fillData() {
   console.log("EndValue ", chartDataX.value)
 }
 
-const sampleDataY = {
-  labels: [ 'January', 'February', 'March', 'April', 'Mei' ],
-  dataset: [
-    {
-      data: [ 41, 20, 12, 35, 22 ]
+const chartOptions: ChartOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
+  backgroundColor: '#666',
+  borderColor: '#fff',
+  interaction: {
+    mode: 'index',
+    intersect: false
+  },
+  /* legend: { display: false }, */
+  scales: {
+    x: {
+      display: false,
+      grid: {
+        display: false
+      },
+      ticks: {
+        display: false
+      },
+      title: {
+        display: true,
+        text: 'Value'
+      }
+    },
+    y: {
+      display: false,
+      grid: {
+        display: false
+      },
+      ticks: {
+        display: false
+      }
     }
-  ]
-}
-
-const chartOptions = {
-  responsive: false,
-  maintainAspectRatio: false
+  },
+  plugins: {
+    legend: {
+      display: false
+    },
+    title: {
+      display: true,
+      position: 'top',
+      font: {
+        family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+        size: 24,
+        weight: 'bold',
+        lineHeight: 1.5
+      },
+      text: 'What bro?'
+    },
+    subtitle: {
+      display: true,
+      position: 'right',
+      text: 'Im subtitle!'
+    }
+  }
 }
 
 /* const webData = computed(() => reportStore.dailyData) */
@@ -97,6 +140,9 @@ onBeforeMount(() => {
   /* }, 5000); */
 })
 
+onMounted(() => {
+})
+
 const loadDaily = () => {
   chartDataX.value = { ...dailyData }
 }
@@ -110,17 +156,11 @@ const loadWeekly = () => {
   <button @click="loadWeekly" class="px-2 py-1 bg-cyan-600 text-white rounded">Weekly</button>
   <button @click="loadDaily" class="ml-2 px-2 py-1 bg-cyan-600 text-white rounded">Daily</button>
   <Bar
-    :chart-options="props.chartOptions"
-    :chart-data="chartDataX"
+    :chart-options="chartOptions"
+    :chart-data="weeklyData"
     :chart-id="props.chartId"
-    :dataset-id-key="datasetIdKey"
-    :plugins="plugins"
-    :css-classes="cssClasses"
-    :styles="styles"
-    :width="width"
-    :height="height"
   />
   <!-- <BarChart :chart-data="chartData" :chart-options="chartOptions" /> -->
-  <LineChart :chart-data="chartDataX" :chart-options="chartOptions" />
+  <LineChart :chart-data="lineData" :chart-options="chartOptions" />
 </template>
 
