@@ -59,7 +59,7 @@ export default {
   },
   data() {
     return {
-      chartDataX: {
+      chartData: {
         labels: [ 'January', 'February', 'March' ],
         datasets: [ { data: [40, 20, 12] } ]
       },

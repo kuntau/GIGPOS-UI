@@ -1,13 +1,14 @@
 import { defineComponent, h, PropType } from 'vue'
 
-import { Bar } from 'vue-chartjs'
+import { Line } from 'vue-chartjs'
 
 import {
   Chart as ChartJS,
   Title,
   Tooltip,
   Legend,
-  BarElement,
+  LineElement,
+  PointElement,
   CategoryScale,
   LinearScale,
   Plugin,
@@ -16,17 +17,17 @@ import {
   ChartOptions
 } from 'chart.js'
 
-ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
+ChartJS.register(Title, Tooltip, Legend, LineElement,PointElement, CategoryScale, LinearScale)
 
 export default defineComponent({
-  name: 'BarChart',
+  name: 'LineChart',
   components: {
-    Bar
+    Line
   },
   props: {
     chartId: {
       type: String,
-      default: 'bar-chart'
+      default: 'line-chart'
     },
     width: {
       type: Number,
@@ -45,15 +46,15 @@ export default defineComponent({
       default: () => {}
     },
     plugins: {
-      type: Array as PropType<Plugin<'bar'>[]>,
+      type: Array as PropType<Plugin<'line'>[]>,
       default: () => []
     },
     chartData: {
-      type: Object as PropType<ChartData<'bar', DefaultDataPoint<'bar'>, unknown>>,
+      type: Object as PropType<ChartData<'line', DefaultDataPoint<'line'>, unknown>>,
       required: true
     },
     chartOptions: {
-      type: Object as PropType<ChartOptions<'bar'>>,
+      type: Object as PropType<ChartOptions<'line'>>,
       default: () => ({ 
         responsive: true,
         maintainAspectRatio: false
@@ -67,7 +68,7 @@ export default defineComponent({
     }
 
     return () =>
-      h(Bar, {
+      h(Line, {
         chartData: props.chartData,
         chartOptions,
         chartId: props.chartId,

@@ -11,7 +11,7 @@ const dailyData = {
     {
       label: 'Data Daily',
       backgroundColor: '#f87979',
-      data: [40, 20, 12, 39]
+      data: [5, 20, 12, 39]
     }
   ]
 }
@@ -40,10 +40,22 @@ const weeklyData = {
   ]
 }
 
+const lineData = {
+  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+  datasets: [
+    {
+      label: 'Data One',
+      backgroundColor: '#f87979',
+      data: [40, 39, 10, 40, 39, 80, 40]
+    }
+  ]
+}
+
 const useReports = defineStore('reports', {
   state: () => ({
     dailyData,
-    weeklyData
+    weeklyData,
+    lineData
   })
 })
 
