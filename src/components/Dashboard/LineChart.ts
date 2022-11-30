@@ -55,10 +55,7 @@ export default defineComponent({
     },
     chartOptions: {
       type: Object as PropType<ChartOptions<'line'>>,
-      default: () => ({ 
-        responsive: true,
-        maintainAspectRatio: false
-      })
+      default: () => {}
     } 
   },
   setup(props) {

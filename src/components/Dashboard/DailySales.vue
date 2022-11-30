@@ -3,9 +3,23 @@ import { PropType, ref, computed, onMounted, onBeforeMount } from 'vue'
 import { useReports } from '../../stores/reports'
 import BarChart from './BarChart'
 import LineChart from './LineChart'
-import { Bar } from 'vue-chartjs'
-import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, Plugin, DefaultDataPoint, ChartData, ChartOptions } from 'chart.js'
-ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
+import {
+  Chart as ChartJS,
+  Title,
+  SubTitle,
+  Tooltip,
+  Legend,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+  Plugin,
+  DefaultDataPoint,
+  ChartData,
+  ChartOptions,
+  Filler
+} from 'chart.js'
+
+ChartJS.register(Title, SubTitle, Tooltip, Legend, BarElement, CategoryScale, LinearScale, Filler)
 
 const reportStore = useReports()
 
@@ -76,8 +90,10 @@ const chartOptions: ChartOptions = {
     },
     subtitle: {
       display: true,
-      position: 'right',
       text: 'Im subtitle!'
+    },
+    filler: {
+      propagate: true
     }
   }
 }
@@ -87,47 +103,7 @@ const dailyData = reportStore.dailyData
 const weeklyData = reportStore.weeklyData
 const lineData = reportStore.lineData
 
-const props = defineProps({
-  chartId: {
-    type: String,
-    default: 'bar-chart'
-  },
-  datasetIdKey: {
-    type: String,
-    default: 'label'
-  },
-  width: {
-    type: Number,
-    default: 400
-  },
-  height: {
-    type: Number,
-    default: 400
-  },
-  cssClasses: {
-    default: '',
-    type: String
-  },
-  styles: {
-    type: Object as PropType<Partial<CSSStyleDeclaration>>,
-    default: () => {}
-  },
-  plugins: {
-    type: Array as PropType<Plugin<'bar'>[]>,
-    default: () => []
-  },
-  chartData: {
-    type: Object as PropType<ChartData<'bar', DefaultDataPoint<'bar'>, unknown>>,
-    required: true,
-  },
-  chartOptions: {
-    type: Object as PropType<ChartOptions<'bar'>>,
-    default: () => {}
-  }
-})
-
-
-const chartDataX = ref<ChartData<'bar'>>(props.chartData)
+const chartDataX = ref<ChartData<'bar'>>(weeklyData)
 const lineDataX = ref<ChartData<'line'>>(lineData)
 
 /* const chartData = ref<ChartData<'bar'>>({ */
@@ -150,17 +126,34 @@ const loadDaily = () => {
 const loadWeekly = () => {
   chartDataX.value = { ...weeklyData }
 }
+
+const chartWidth = 200
 </script>
 
 <template>
-  <button @click="loadWeekly" class="px-2 py-1 bg-cyan-600 text-white rounded">Weekly</button>
-  <button @click="loadDaily" class="ml-2 px-2 py-1 bg-cyan-600 text-white rounded">Daily</button>
-  <Bar
-    :chart-options="chartOptions"
-    :chart-data="weeklyData"
-    :chart-id="props.chartId"
-  />
-  <!-- <BarChart :chart-data="chartData" :chart-options="chartOptions" /> -->
-  <LineChart :chart-data="lineData" :chart-options="chartOptions" />
+  <div id="3charts" class="flex justify-center bg-red-200 gap-1">
+    <BarChart 
+      class="bg-white relative grow"
+      :height="200"
+      :chart-data="chartDataX" 
+      :chart-options="chartOptions" 
+    />
+    <LineChart 
+      class="bg-white relative grow"
+      :height="200"
+      :chart-data="lineData" 
+      :chart-options="chartOptions" 
+    />
+    <BarChart 
+      class="bg-white relative grow"
+      :height="200"
+      :chart-data="chartDataX" 
+      :chart-options="chartOptions" 
+    />
+  </div>
+  <div class="mt-4">
+    <button @click="loadWeekly" class="px-2 py-1 bg-cyan-600 text-white rounded">Weekly</button>
+    <button @click="loadDaily" class="ml-2 px-2 py-1 bg-cyan-600 text-white rounded">Daily</button>
+  </div>
 </template>
 

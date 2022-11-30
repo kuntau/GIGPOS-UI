@@ -48,20 +48,21 @@ const lineData = {
   datasets: [
     {
       label: 'Quaterly Data',
-      /* backgroundColor: '#f87979', */
-      data: [40, 39, 0, 40, 39, 80, 40, 55, 34, 75, 21, 15],
-      fill: true,
-      tension: 0.3,
-      borderWidth: 3,
-      pointStyle: 'star',
-      borderColor: function (context: ScriptableChartContext) {
+      /* backgroundColor: 'rgba(248, 121, 121, .2)', */
+      backgroundColor: function (context: ScriptableChartContext) {
         const chart = context.chart
         const { ctx, chartArea } = chart
 
         if (!chartArea) return
 
         return getGradient(ctx, chartArea)
-      }
+      },
+      data: [40, 39, 0, 40, 39, 80, 40, 55, 34, 75, 21, 15],
+      fill: true,
+      tension: 0.1,
+      borderWidth: 5,
+      pointStyle: 'star',
+      borderColor: 'rgba(0, 0, 255, .7)'
     }
   ]
 }
@@ -76,14 +77,10 @@ const getGradient = (ctx: CanvasRenderingContext2D, chartArea: ChartArea) => {
     width = chartWidth;
     height = chartHeight;
     gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
-    gradient.addColorStop(0, 'rgba(238, 130, 238, 1)');
-    gradient.addColorStop(0.5, 'rgba(0, 0, 255, 1)');
+    gradient.addColorStop(0, 'rgba(238, 130, 238, .3)');
+    gradient.addColorStop(0.5, 'rgba(0, 0, 255, .5)');
     gradient.addColorStop(1, 'rgba(0, 157, 255, 1)');
-    /* gradient.addColorStop(0, Utils.CHART_COLORS.blue); */
-    /* gradient.addColorStop(0.5, Utils.CHART_COLORS.yellow); */
-    /* gradient.addColorStop(1, Utils.CHART_COLORS.red); */
   }
-
   return gradient;
 }
 
