@@ -6,19 +6,22 @@ import { useStore } from './stores/gigpos';
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
-
 const gigpos = useStore();
 
+/* This will fix grid overflow */
+/* https://stackoverflow.com/questions/43311943/prevent-content-from-expanding-grid-items */
+const fixGrid = {
+  minWidth: 0,
+  minHeight: 0,
+}
 </script>
  
 <template>
-  <!-- <div class="box-border wrapper content-center"> -->
-    <SideNav :page=gigpos.pageName class="sidebar" />
-    <!-- <section class="main"> -->
-      <TopNav class="topbar" />
-      <router-view :page=route.path class="main mt-4" />
-    <!-- </section> -->
-  <!-- </div> -->
+  <div class="box-border lg:container lg:mx-auto wrapper">
+    <SideNav :page=gigpos.pageName class="sidebar" :style="fixGrid" />
+    <TopNav class="topbar" :style="fixGrid" />
+    <router-view :page=route.path class="main mt-4" :style="fixGrid" />
+  </div>
 </template>
 
 <style>
@@ -69,32 +72,25 @@ const gigpos = useStore();
 }
 
 .wrapper {
-  /* min-width: 1024px; */
   display: grid; 
-  grid-template-columns: 240px 1fr; 
+  grid-template-columns: 200px minmax(0, 1fr); 
   grid-template-rows: 64px 1fr; 
   gap: 0px 0px; 
   grid-template-areas: 
     "SideBar TopBar"
     "SideBar Main"; 
+  min-height: 0;
+  min-width: 0;
 }
 
 .sidebar {
-  /* width: 240px; */
-  /* z-index: 10; */
   grid-area: SideBar;
 }
 .topbar {
   grid-area: TopBar;
 }
 .main {
-  /* width: calc(100%-440px); */
-
-  /* 2 grid */
   grid-area: Main;
-
-  /* 3 grid */
-  /* grid-area: 2 / 2 / 3 / 3;  */
 }
 
 /* links */
