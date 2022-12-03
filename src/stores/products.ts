@@ -18,11 +18,13 @@ interface Category {
   faIcon: string
 }
 
-const categories: Category[] = await fetch('http://localhost:3000/data/categories.json')
+const hostName = window.location.hostname
+
+const categories: Category[] = await fetch(`http://${hostName}:3000/data/categories.json`)
   .then(res => res.json())
   .then(data => data)
 
-const products: Product[] = await fetch('http://localhost:3000/data/products.json')
+const products: Product[] = await fetch(`http://${hostName}:3000/data/products.json`)
   .then(res => res.json())
   .then(data => data)
 
