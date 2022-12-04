@@ -60,8 +60,8 @@ const lineData = {
       data: [40, 39, 0, 40, 39, 80, 40, 55, 34, 75, 21, 15],
       fill: true,
       tension: 0.1,
-      borderWidth: 5,
-      pointStyle: 'star',
+      borderWidth: 0,
+      pointStyle: 'circle',
       borderColor: 'rgba(0, 0, 255, .7)'
     }
   ]
