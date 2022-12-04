@@ -43,12 +43,11 @@ const chartOptions: ChartOptions = {
   responsive: true,
   maintainAspectRatio: false,
   backgroundColor: '#666',
-  borderColor: '#fff',
+  borderColor: '#234',
   interaction: {
     mode: 'index',
     intersect: false
   },
-  /* legend: { display: false }, */
   scales: {
     x: {
       display: false,
@@ -64,36 +63,50 @@ const chartOptions: ChartOptions = {
       }
     },
     y: {
-      display: false,
+      display: true,
       grid: {
-        display: false
+        display: true
       },
       ticks: {
-        display: false
+        display: true
       }
     }
   },
   plugins: {
     legend: {
-      display: false
+      display: true
     },
     title: {
-      display: true,
+      display: false,
       position: 'top',
       font: {
-        family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
-        size: 24,
+        size: 20,
         weight: 'bold',
-        lineHeight: 1.5
       },
       text: 'What bro?'
     },
     subtitle: {
-      display: true,
+      display: false,
       text: 'Im subtitle!'
     },
     filler: {
       propagate: true
+    }
+  }
+}
+
+const barChartOptions: ChartOptions<'bar'> = {
+  ...chartOptions
+}
+
+const lineChartOptions: ChartOptions<'line'> = {
+  ...chartOptions,
+  plugins: {
+    ...chartOptions.plugins,
+    legend:{ display: true },
+    subtitle: {
+      display: false,
+      text: 'Im line yo!'
     }
   }
 }
@@ -128,27 +141,28 @@ const loadWeekly = () => {
 }
 
 const chartWidth = 200
+const chartHeight = 200
 </script>
 
 <template>
-  <div id="3charts" class="flex justify-center bg-red-200 gap-1">
+  <div id="3charts" class="md:flex gap-1">
     <BarChart 
-      class="bg-white relative grow"
-      :height="200"
+      class="p-2 bg-white min-w-0 md:flex-1"
+      :height="chartHeight"
       :chart-data="chartDataX" 
-      :chart-options="chartOptions" 
+      :chart-options="barChartOptions" 
     />
     <LineChart 
-      class="bg-white relative grow"
-      :height="200"
-      :chart-data="lineData" 
-      :chart-options="chartOptions" 
+      class="p-2 bg-white min-w-0 md:flex-1"
+      :height="chartHeight"
+      :chart-data="lineDataX" 
+      :chart-options="lineChartOptions" 
     />
     <BarChart 
-      class="bg-white relative grow"
-      :height="200"
+      class="p-2 bg-white min-w-0 md:flex-1"
+      :height="chartHeight"
       :chart-data="chartDataX" 
-      :chart-options="chartOptions" 
+      :chart-options="barChartOptions" 
     />
   </div>
   <div class="mt-4">
