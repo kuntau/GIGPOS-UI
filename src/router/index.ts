@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
-import Dashboard from '@/pages/Dashboard.vue'
-import Cashier from '@/pages/Cashier.vue'
+const Dashboard = () => import('@/pages/Dashboard.vue')
+const Cashier   = () => import('@/pages/Cashier.vue')
 const Inbox = { template: '<div>Inbox</div>' };
 
 const routes: RouteRecordRaw[] = [
