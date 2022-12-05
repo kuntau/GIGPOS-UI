@@ -1,82 +1,23 @@
 <script setup lang="ts">
-import { useRouter, useRoute } from 'vue-router';
-import { useCounter } from '../stores/gigpos';
+import { useRoute, RouteRecordName } from 'vue-router';
+import { routes } from '../router';
 
-const router = useRouter();
 const route = useRoute();
-const counter = useCounter();
 
-const sideNavMain = [
-  {
-    name: 'Dashboard',
-    url: 'dashboard.html',
-    to: '/dashboard',
-    icon: 'fad fa-tachometer',
-  },
-  {
-    name: 'Cashier',
-    url: 'cashier.html',
-    to: '/cashier',
-    icon: 'fad fa-cash-register',
-  },
-  {
-    name: 'Inbox',
-    url: 'inbox.html',
-    to: '/inbox',
-    icon: 'fad fa-mailbox',
-  },
-]
+const navMain = routes.filter(route => route.meta?.category === 'main')
+const navManage = routes.filter(route => route.meta?.category === 'manage')
+const navMisc = routes.filter(route => route.meta?.category === 'misc')
 
-const sideNavReport = [
-  {
-    name: 'Reports',
-    url: 'reports.html',
-    icon: 'fad fa-file-chart-line',
-    active: false
-  },
-  {
-    name: 'Charts',
-    url: 'charts.html',
-    icon: 'fad fa-chart-line',
-    active: false
-  },
-  {
-    name: 'Products',
-    url: 'charts.html',
-    icon: 'fad fa-boxes',
-    active: false
-  },
-  {
-    name: 'Customers',
-    url: 'charts.html',
-    icon: 'fad fa-users',
-    active: false
-  },
-]
-const sideNavHelp = [
-  {
-    name: 'Settings',
-    url: 'settings.html',
-    icon: 'fad fa-cogs',
-    active: false
-  },
-  {
-    name: 'Support',
-    url: 'support.html',
-    icon: 'fad fa-life-ring',
-    active: false
-  }
-]
-
-const openInbox = () => router.push('/inbox')
+// another method to change page. just call this with @click
+// const openInbox = () => router.push('/inbox')
 
 defineProps<{
-  page: string
+  page: RouteRecordName|null|undefined
 }>()
 
 </script>
 <template>
-  <div class="py-3">
+  <aside class="py-3">
     <div class="store text-blue-800 font-medium px-1 py-2 mb-3">
       <a class="overflow-hidden" href="#">
         <span class="font-black bg-white p-2 rounded-full shadow mr-1"><i class="fad fa-store"></i></span> Gets Global <span class="font-black fas fa-chevron-down"></span></a>
@@ -84,40 +25,32 @@ defineProps<{
     <nav class="pt-3">
       <p class="title uppercase text-xs text-gray-600 tracking-wider">Main</p>
       <ul class="ml-2 mt-2">
-        <li class="flex-grow px-2 py-1" v-for="nav in sideNavMain">
-          <router-link class="text-core font-normal tracking-wide text-gray-700 hover:text-blue-700" :class="{ active: nav.to === route.path }" :to="nav.to">
-            <i :class="nav.icon"></i> {{ nav.name }}
+        <li class="flex-grow px-2 py-1" v-for="nav in navMain">
+          <router-link class="text-core font-normal tracking-wide text-gray-700 hover:text-blue-700" :class="{ active: nav.path === route.path }" :to="nav.path">
+            <i :class="nav.meta?.icon"></i> {{ nav.name }}
           </router-link>
         </li>
       </ul>
-      <p class="title uppercase text-xs text-gray-600 tracking-wider mt-3">Reporting</p>
+
+      <p class="mt-2 title uppercase text-xs text-gray-600 tracking-wider">Manage</p>
       <ul class="ml-2 mt-2">
-        <li class="flex-grow px-2 py-1" v-for="nav in sideNavReport">
-          <a class="text-core font-normal tracking-wide text-gray-700 hover:text-blue-700" :class="{ active: nav.active }" :href="nav.url">
-            <i :class="nav.icon"></i> {{ nav.name }}
-          </a>
+        <li class="flex-grow px-2 py-1" v-for="nav in navManage">
+          <router-link class="text-core font-normal tracking-wide text-gray-700 hover:text-blue-700" :class="{ active: nav.path === route.path }" :to="nav.path">
+            <i :class="nav.meta?.icon"></i> {{ nav.name }}
+          </router-link>
         </li>
       </ul>
-      <p class="title uppercase text-xs text-gray-600 tracking-wider mt-3">Help</p>
+
+      <p class="mt-2 title uppercase text-xs text-gray-600 tracking-wider">Misc</p>
       <ul class="ml-2 mt-2">
-        <li class="flex-grow px-2 py-1" v-for="nav in sideNavHelp">
-          <a class="text-core font-normal tracking-wide text-gray-700 hover:text-blue-700" :class="{ active: nav.active }" :href="nav.url">
-            <i :class="nav.icon"></i> {{ nav.name }}
-          </a>
-        </li>
-        <li class="flex-grow px-2 py-1">
-          <a class="text-core font-normal tracking-wide text-gray-700 hover:text-blue-700" @click="openInbox()" href="#">
-            <i class="fad fa-cog"></i> {{ counter.count }}
-          </a>
-        </li>
-        <li class="flex-grow px-2 py-1">
-          <a class="text-core font-normal tracking-wide text-gray-700 hover:text-blue-700" @click="openInbox()" href="#">
-            <i class="fad fa-file"></i> {{ page }}
-          </a>
+        <li class="flex-grow px-2 py-1" v-for="nav in navMisc">
+          <router-link class="text-core font-normal tracking-wide text-gray-700 hover:text-blue-700" :class="{ active: nav.path === route.path }" :to="nav.path">
+            <i :class="nav.meta?.icon"></i> {{ nav.name }}
+          </router-link>
         </li>
       </ul>
     </nav>
-  </div>
+  </aside>
 </template>
 <style scoped>
 

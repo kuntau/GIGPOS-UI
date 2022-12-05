@@ -18,9 +18,9 @@ const fixGrid = {
  
 <template>
   <div class="box-border lg:container lg:mx-auto wrapper">
-    <SideNav :page=gigpos.pageName class="sidebar" :style="fixGrid" />
+    <SideNav :page="route.name" class="sidebar" :style="fixGrid" />
     <TopNav class="topbar" :style="fixGrid" />
-    <router-view :page=route.path class="main mt-4" :style="fixGrid" v-slot="{ Component }">
+    <router-view :page=route.name class="main mt-4" :style="fixGrid" v-slot="{ Component }">
       <transition name="slide-fade">
         <component :is="Component" />
       </transition>
