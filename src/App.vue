@@ -20,7 +20,11 @@ const fixGrid = {
   <div class="box-border lg:container lg:mx-auto wrapper">
     <SideNav :page=gigpos.pageName class="sidebar" :style="fixGrid" />
     <TopNav class="topbar" :style="fixGrid" />
-    <router-view :page=route.path class="main mt-4" :style="fixGrid" />
+    <router-view :page=route.path class="main mt-4" :style="fixGrid" v-slot="{ Component }">
+      <transition name="slide-fade">
+        <component :is="Component" />
+      </transition>
+    </router-view>
   </div>
 </template>
 
@@ -91,6 +95,19 @@ const fixGrid = {
 }
 .main {
   grid-area: Main;
+}
+
+/*
+  Enter and leave animations can use different
+  durations and timing functions.
+*/
+.slide-fade-enter-active {
+  transition: all 0.1s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from {
+  transform: translateX(-20px);
+  opacity: 0;
 }
 
 /* links */
