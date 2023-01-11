@@ -15,6 +15,11 @@ const Orders = () => import('@/pages/OrdersPage.vue')
 const Settings = () => import('@/pages/SettingsPage.vue')
 const Support = () => import('@/pages/SupportPage.vue')
 
+// Auth
+const Login = () => import('@/pages/LoginPage.vue')
+const Register = () => import('@/pages/RegisterPage.vue')
+const Reset = () => import('@/pages/ResetPage.vue')
+
 export const routes: RouteRecordRaw[] = [
   {
     path: '/dashboard',
@@ -96,6 +101,33 @@ export const routes: RouteRecordRaw[] = [
     meta: {
       icon: 'fad fa-life-ring',
       category: 'misc',
+    },
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login,
+    meta: {
+      icon: 'fad fa-sign-in',
+      category: 'auth',
+    },
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register,
+    meta: {
+      icon: 'fad fa-sign-in',
+      category: 'auth',
+    },
+  },
+  {
+    path: '/reset',
+    name: 'Reset',
+    component: Reset,
+    meta: {
+      icon: 'fad fa-sign-in',
+      category: 'auth',
     },
   },
 ]

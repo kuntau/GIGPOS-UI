@@ -40,6 +40,7 @@
 ## Library
 
 - Fetch wrapper, [mande](https://github.com/posva/mande)
+- or, [axios](https://github.com/axios/axios)
 
 ## Docs
 
