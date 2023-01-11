@@ -5,11 +5,9 @@ env:
   commonjs: true
 extends: 
   - 'eslint:recommended'
-  - '@vue/typescript/recommend'
-  - 'plugin:vue/vue3-recommended'
+  - 'plugin:vue/vue3-essential'
+  - '@vue/eslint-config-typescript'
   - 'prettier'
-  # - 'plugin:@typescipt-eslint/eslint-recommend'
-  # - 'plugin:@typescipt-eslint/recommend'
 globals:
   Atomics: readonly
   SharedArrayBuffer: readonly
@@ -20,7 +18,6 @@ plugins:
   - 'vue'
   - 'html'
   - 'prettier'
-  # - '@typescript-eslint'
 rules:
   prettier/prettier:
     - 'warn'
