@@ -1,11 +1,18 @@
 <script setup lang="ts">
-const topNavLeft = ['Home', 'Name'];
-const topNavRight = ['Logout', 'Kuntau'];
+import { useRouter, RouteRecordName } from 'vue-router'
+import { routes } from '../router'
+const router = useRouter()
+
+const topNavLeft = ['Home', 'Name']
+// const topNavRight = ['Logout', 'Kuntau'];
+const navRight = routes.filter((route) => route.meta?.category === 'auth')
+
+defineProps<{
+  page: RouteRecordName | null | undefined
+}>()
 </script>
 <template>
-  <nav
-    class="inset-0 inline-flex flex-grow w-full h-auto py-1"
-  >
+  <nav class="inset-0 inline-flex flex-grow w-full h-auto py-1">
     <div class="top-nav-left flex flex-grow items-start">
       <ul class="flex self-center">
         <li v-for="nav in topNavLeft" :key="nav" class="text-gray-700">
@@ -27,18 +34,19 @@ const topNavRight = ['Logout', 'Kuntau'];
     </div>
     <div class="top-nav-right">
       <ul class="flex justify-end items-center">
-        <li v-for="nav in topNavRight" :key="nav" class="inline-block">
-          <a class="text-gray-700" href="#">
-            <i class="fad fa-sign-in"></i> {{ nav }}
+        <li v-for="nav in navRight" :key="nav.path" class="inline-block">
+          <a class="text-gray-700 cursor-pointer" @click="router.push(nav.path)">
+            <i class="fad fa-sign-in"></i> {{ nav.name }}
           </a>
         </li>
         <li class="inline-block">
-          <a href="#"
-            ><img
+          <a href="#">
+            <img
               class="h-8 rounded-full shadow"
               src="https://gravatar.com/avatar/d69aae377ffa1f6fd90935a888933070"
               alt=""
-          /></a>
+            />
+          </a>
         </li>
       </ul>
     </div>
@@ -49,6 +57,7 @@ const topNavRight = ['Logout', 'Kuntau'];
 nav li {
   padding: 0.75rem;
 }
+
 nav .search {
   min-width: 250px;
 }

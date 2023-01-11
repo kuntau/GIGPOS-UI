@@ -1,16 +1,19 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
 const Dashboard = () => import('@/pages/Dashboard.vue')
-const Cashier   = () => import('@/pages/Cashier.vue')
-const Inbox = { template: '<div class="supports"><h1>This is <strong>{{ $route.name }}</strong> page.</h1></div>' };
+const Cashier = () => import('@/pages/Cashier.vue')
+const Inbox = {
+  template:
+    '<div class="supports"><h1>This is <strong>{{ $route.name }}</strong> page.</h1></div>',
+}
 
-const Reports   = () => import('@/pages/Reports.vue')
-const Products   = () => import('@/pages/Products.vue')
-const Customers   = () => import('@/pages/Customers.vue')
-const Orders   = () => import('@/pages/Orders.vue')
+const Reports = () => import('@/pages/Reports.vue')
+const Products = () => import('@/pages/Products.vue')
+const Customers = () => import('@/pages/Customers.vue')
+const Orders = () => import('@/pages/Orders.vue')
 
-const Settings   = () => import('@/pages/Settings.vue')
-const Support   = () => import('@/pages/Support.vue')
+const Settings = () => import('@/pages/Settings.vue')
+const Support = () => import('@/pages/Support.vue')
 
 export const routes: RouteRecordRaw[] = [
   {
@@ -20,8 +23,8 @@ export const routes: RouteRecordRaw[] = [
     component: Dashboard,
     meta: {
       icon: 'fad fa-tachometer',
-      category: 'main'
-    }
+      category: 'main',
+    },
   },
   {
     path: '/cashier',
@@ -29,8 +32,8 @@ export const routes: RouteRecordRaw[] = [
     component: Cashier,
     meta: {
       icon: 'fad fa-cash-register',
-      category: 'main'
-    }
+      category: 'main',
+    },
   },
   {
     path: '/inbox',
@@ -38,8 +41,8 @@ export const routes: RouteRecordRaw[] = [
     component: Inbox,
     meta: {
       icon: 'fad fa-mail-bulk',
-      category: 'main'
-    }
+      category: 'main',
+    },
   },
   {
     path: '/orders',
@@ -47,8 +50,8 @@ export const routes: RouteRecordRaw[] = [
     component: Orders,
     meta: {
       icon: 'fad fa-receipt',
-      category: 'manage'
-    }
+      category: 'manage',
+    },
   },
   {
     path: '/reports',
@@ -56,8 +59,8 @@ export const routes: RouteRecordRaw[] = [
     component: Reports,
     meta: {
       icon: 'fad fa-analytics',
-      category: 'manage'
-    }
+      category: 'manage',
+    },
   },
   {
     path: '/products',
@@ -65,8 +68,8 @@ export const routes: RouteRecordRaw[] = [
     component: Products,
     meta: {
       icon: 'fad fa-boxes',
-      category: 'manage'
-    }
+      category: 'manage',
+    },
   },
   {
     path: '/customers',
@@ -74,8 +77,8 @@ export const routes: RouteRecordRaw[] = [
     component: Customers,
     meta: {
       icon: 'fad fa-users',
-      category: 'manage'
-    }
+      category: 'manage',
+    },
   },
   {
     path: '/settings',
@@ -83,8 +86,8 @@ export const routes: RouteRecordRaw[] = [
     component: Settings,
     meta: {
       icon: 'fad fa-cogs',
-      category: 'misc'
-    }
+      category: 'misc',
+    },
   },
   {
     path: '/support',
@@ -92,14 +95,14 @@ export const routes: RouteRecordRaw[] = [
     component: Support,
     meta: {
       icon: 'fad fa-life-ring',
-      category: 'misc'
-    }
+      category: 'misc',
+    },
   },
 ]
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes,
 })
 
 export default router

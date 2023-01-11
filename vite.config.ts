@@ -8,8 +8,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
-      'vue': 'vue/dist/vue.esm-bundler.js'
-    }
+      vue: 'vue/dist/vue.esm-bundler.js',
+    },
   },
   server: {
     host: true,
@@ -17,13 +17,8 @@ export default defineConfig({
     strictPort: true,
     open: false,
     watch: {
-      ignored: [
-        '**/public/fonts/**'
-      ]
-    }
+      ignored: ['**/public/fonts/**'],
+    },
   },
-  plugins: [
-    vue(),
-    WindiCSS()
-  ]
+  plugins: [vue(), WindiCSS()],
 })

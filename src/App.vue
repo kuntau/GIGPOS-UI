@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import TopNav from './components/TopNav.vue';
-import SideNav from './components/SideNav.vue';
+import TopNav from './components/TopNav.vue'
+import SideNav from './components/SideNav.vue'
 
-import { useStore } from './stores/gigpos';
+import { useStore } from './stores/gigpos'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
-const gigpos = useStore();
+const gigpos = useStore()
 
 /* This will fix grid overflow */
 /* https://stackoverflow.com/questions/43311943/prevent-content-from-expanding-grid-items */
@@ -15,12 +15,12 @@ const fixGrid = {
   minHeight: 0,
 }
 </script>
- 
+
 <template>
   <div class="box-border lg:container lg:mx-auto wrapper">
     <SideNav :page="route.name" class="sidebar" :style="fixGrid" />
     <TopNav class="topbar" :style="fixGrid" />
-    <router-view :page=route.name class="main mt-4" :style="fixGrid" v-slot="{ Component }">
+    <router-view :page="route.name" class="main mt-4" :style="fixGrid" v-slot="{ Component }">
       <transition name="slide-fade">
         <component :is="Component" />
       </transition>
@@ -64,10 +64,10 @@ const fixGrid = {
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: 'Open Sans', 'Helvetica Neue', Arial, -apple-system,
-    BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-family-monospace: 'Operator Mono', Menlo, Monaco, Consolas,
-    'Liberation Mono', 'Courier New', SFMono-Regular, monospace;
+  --font-family-sans-serif: 'Open Sans', 'Helvetica Neue', Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+  --font-family-monospace: 'Operator Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', SFMono-Regular,
+    monospace;
   background-color: var(--bg-color);
   font-family: 'Open Sans', sans-serif;
   box-sizing: border-box;
@@ -76,13 +76,13 @@ const fixGrid = {
 }
 
 .wrapper {
-  display: grid; 
-  grid-template-columns: 200px minmax(0, 1fr); 
-  grid-template-rows: 64px 1fr; 
-  gap: 0px 0px; 
-  grid-template-areas: 
-    "SideBar TopBar"
-    "SideBar Main"; 
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  grid-template-rows: 64px 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    'SideBar TopBar'
+    'SideBar Main';
   min-height: 0;
   min-width: 0;
 }
@@ -90,9 +90,11 @@ const fixGrid = {
 .sidebar {
   grid-area: SideBar;
 }
+
 .topbar {
   grid-area: TopBar;
 }
+
 .main {
   grid-area: Main;
 }
@@ -114,9 +116,11 @@ const fixGrid = {
 a {
   color: var(--link-color);
 }
+
 a:hover {
   color: var(--link-hover-color);
 }
+
 a.active {
   color: var(--link-color);
   font-weight: 600;
