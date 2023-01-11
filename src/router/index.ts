@@ -1,19 +1,19 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
-const Dashboard = () => import('@/pages/Dashboard.vue')
-const Cashier = () => import('@/pages/Cashier.vue')
+const Dashboard = () => import('@/pages/DashboardPage.vue')
+const Cashier = () => import('@/pages/CashierPage.vue')
 const Inbox = {
   template:
     '<div class="supports"><h1>This is <strong>{{ $route.name }}</strong> page.</h1></div>',
 }
 
-const Reports = () => import('@/pages/Reports.vue')
-const Products = () => import('@/pages/Products.vue')
-const Customers = () => import('@/pages/Customers.vue')
-const Orders = () => import('@/pages/Orders.vue')
+const Reports = () => import('@/pages/ReportsPage.vue')
+const Products = () => import('@/pages/ProductsPage.vue')
+const Customers = () => import('@/pages/CustomersPage.vue')
+const Orders = () => import('@/pages/OrdersPage.vue')
 
-const Settings = () => import('@/pages/Settings.vue')
-const Support = () => import('@/pages/Support.vue')
+const Settings = () => import('@/pages/SettingsPage.vue')
+const Support = () => import('@/pages/SupportPage.vue')
 
 export const routes: RouteRecordRaw[] = [
   {
